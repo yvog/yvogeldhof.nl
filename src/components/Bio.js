@@ -16,7 +16,7 @@ class Bio extends React.Component {
         }}
       >
         <img
-          src={'yvogeldhof.jpg'}
+          src={'/yvogeldhof.jpg'}
           alt={`Yvo Geldhof`}
           style={{
             marginRight: rhythm(1 / 2),
