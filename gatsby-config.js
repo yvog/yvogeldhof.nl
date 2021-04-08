@@ -4,7 +4,7 @@ module.exports = {
     author: 'Yvo Geldhof',
     description: 'Blog by Yvo Geldhof.',
     siteUrl: 'https://yvogeldhof.nl',
-    googleSiteVerification: '',
+    googleSiteVerification: 'OorBqQ1kAYcsGd1weZeQjN-96TgRYrataSLKVRpinZU',
     social: {
       twitter: '@yvogdev',
     },
@@ -90,12 +90,6 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: ``,
-      },
-    },
     {
       resolve: `gatsby-plugin-feed`,
       options: {
