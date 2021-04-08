@@ -1,17 +1,10 @@
-# Gatsby Starter Blog with Typescript
+# https://yvogeldhof.nl
 
-This project attempts to make Gatsby's [starter blog](https://github.com/gatsbyjs/gatsby-starter-blog) type-safe. In addition, styled components are used in favor of inline jsx styles.
+Welcome to the code and articles for my weblog. This code is based on the code from Dan Abromov's weblog [Overreacted.io](https://github.com/gaearon/overreacted.io).
 
-## Features (in addition to the Gatsby Starter)
+To run locally, `npm install`, then `npm run dev`, then open https://localhost:8000.
 
-- [Typescript](http://www.typescriptlang.org/)
-- [Styled Components](https://www.styled-components.com/)
-- [Graphql Codegen](https://github.com/dotansimha/graphql-code-generator)
-- [Gatsby Transition Link](https://www.gatsbyjs.org/packages/gatsby-plugin-transition-link/?=transition)
+For debugging read https://github.com/Microsoft/vscode-recipes/tree/master/Gatsby-js.
 
-## Roadmap
+Markdown pages starting with '_' are not displayed on production.
 
-- Make `onCreateNode` type-safe
-- Improved grapql typings generations
-
-Currently, the type graphql type definition file has everything as nullable, so a lot of nested non-null assertions are used when accessing data from queries.
