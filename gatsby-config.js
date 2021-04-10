@@ -4,7 +4,7 @@ module.exports = {
     author: 'Yvo Geldhof',
     description: 'Blog by Yvo Geldhof.',
     siteUrl: 'https://yvogeldhof.nl',
-    googleSiteVerification: 'OorBqQ1kAYcsGd1weZeQjN-96TgRYrataSLKVRpinZU',
+    googleSiteVerification: 'google-site-verification=OorBqQ1kAYcsGd1weZeQjN-96TgRYrataSLKVRpinZU',
     social: {
       twitter: '@yvogdev',
     },
