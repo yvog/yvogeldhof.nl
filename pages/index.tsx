@@ -1,13 +1,13 @@
-import { getAllNodes } from "next-mdx/server";
-import Link from "next/link";
-import { Post } from "../types";
+import { getAllNodes } from 'next-mdx/server'
+import Link from 'next/link'
+import { Post } from '../types'
 
 type PageProps = {
-  posts: Post[];
-};
+  posts: Post[]
+}
 
 export default function IndexPage(props: PageProps) {
-  const { posts } = props;
+  const { posts } = props
 
   return (
     <div>
@@ -18,26 +18,26 @@ export default function IndexPage(props: PageProps) {
           <div>Date: {post.frontMatter?.date}</div>
           <div>Title: {post.frontMatter?.title}</div>
           <div>Excerpt: {post.frontMatter?.excerpt}</div>
-          <Link href={post.url ?? "#"}>Read more</Link>
+          <Link href={post.url ?? '#'}>Read more</Link>
           <hr />
         </div>
       ))}
     </div>
-  );
+  )
 }
 
 export async function getStaticProps() {
-  const posts = await getAllNodes<Post>("post");
+  const posts = await getAllNodes<Post>('post')
 
   if (!posts) {
     return {
       notFound: true,
-    };
+    }
   }
 
   return {
     props: {
       posts,
     },
-  };
+  }
 }
