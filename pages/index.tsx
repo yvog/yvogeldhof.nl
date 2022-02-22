@@ -1,3 +1,4 @@
+import { Button } from '@mui/material'
 import { getAllNodes } from 'next-mdx/server'
 import Link from 'next/link'
 import { Post } from '../types'
@@ -11,7 +12,7 @@ export default function IndexPage(props: PageProps) {
 
   return (
     <div>
-      <h1>Yvo Geldhof{"'"}s tech blog</h1>
+      <h1>Yvo Geldhof&apos;s tech blog</h1>
       <hr />
       {posts.map((post: Post) => (
         <div key={post.url}>
