@@ -2,13 +2,17 @@ import { useHydrate } from 'next-mdx/client'
 import { getMdxNode, getMdxPaths } from 'next-mdx/server'
 import { Post } from '../../types'
 
-export default function PostPage({ post }: any) {
+type PostPageProps = {
+  post: Post
+}
+
+export default function PostPage({ post }: PostPageProps) {
   const content = useHydrate(post)
 
   return (
     <article>
-      <h1>{post.frontMatter.title}</h1>
-      {post.frontMatter.excerpt ? <p>{post.frontMatter.excerpt}</p> : null}
+      <h1>{post.frontMatter?.title}</h1>
+      {post.frontMatter?.excerpt ? <p>{post.frontMatter.excerpt}</p> : null}
       <hr />
       {content}
     </article>

@@ -1,4 +1,3 @@
-import { Button } from '@mui/material'
 import { getAllNodes } from 'next-mdx/server'
 import Link from 'next/link'
 import { Post } from '../types'
