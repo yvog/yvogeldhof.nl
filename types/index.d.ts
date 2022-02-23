@@ -1,8 +1,7 @@
-import { MdxNode } from "next-mdx/server";
+import { MdxNode } from 'next-mdx/server'
 
 type Post = MdxNode<{
-  title: string;
-  excerpt?: string;
-  category?: string;
-  date?: string;
-}>;
+  title: string
+  category?: string
+  date?: string
+}>

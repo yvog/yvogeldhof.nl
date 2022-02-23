@@ -1,5 +1,8 @@
+import { Container, Divider, Typography } from '@mui/material'
 import { getAllNodes } from 'next-mdx/server'
-import Link from 'next/link'
+import { Footer } from '../components/Footer/Footer'
+import { Header } from '../components/Header/Header'
+import { PostItemList } from '../components/PostItemList/PostItemList'
 import { Post } from '../types'
 
 type PageProps = {
@@ -10,19 +13,11 @@ export default function IndexPage(props: PageProps) {
   const { posts } = props
 
   return (
-    <div>
-      <h1>Yvo Geldhof&apos;s tech blog</h1>
-      <hr />
-      {posts.map((post: Post) => (
-        <div key={post.url}>
-          <div>Date: {post.frontMatter?.date}</div>
-          <div>Title: {post.frontMatter?.title}</div>
-          <div>Excerpt: {post.frontMatter?.excerpt}</div>
-          <Link href={post.url ?? '#'}>Read more</Link>
-          <hr />
-        </div>
-      ))}
-    </div>
+    <Container maxWidth={'md'}>
+      <Header />
+      <PostItemList posts={posts} />
+      <Footer />
+    </Container>
   )
 }
 
