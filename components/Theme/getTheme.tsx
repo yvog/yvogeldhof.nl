@@ -8,7 +8,7 @@ const darkTheme: PaletteOptions = {
   //
 }
 
-export const getBlogTheme = (mode: PaletteMode) => ({
+export const getTheme = (mode: PaletteMode) => ({
   palette: {
     mode,
     ...(mode === 'light' ? lightTheme : darkTheme),

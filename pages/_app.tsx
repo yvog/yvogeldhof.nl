@@ -1,16 +1,20 @@
-import createCache from '@emotion/cache'
-import { CacheProvider } from '@emotion/react'
+import { CacheProvider, EmotionCache } from '@emotion/react'
 import { CssBaseline } from '@mui/material'
 import type { AppProps } from 'next/app'
 import { BlogThemeProvider } from '../components/Theme/BlogThemeProvider'
+import createEmotionCache from '../components/Theme/createEmotionCache'
 import { ColorModeContextProvider } from '../context/ColorModeContext/ColorModeContextProvider'
 
-const muiCache = createCache({
-  key: 'mui',
-  prepend: true,
-})
+// Client-side cache, shared for the whole session of the user in the browser.
+const muiCache = createEmotionCache()
 
-export default function MyApp({ Component, pageProps }: AppProps) {
+type MyAppProps = AppProps & {
+  emotionCache?: EmotionCache
+}
+
+export default function MyApp(props: MyAppProps) {
+  const { Component, emotionCache = muiCache, pageProps } = props
+
   return (
     <CacheProvider value={muiCache}>
       <ColorModeContextProvider>
