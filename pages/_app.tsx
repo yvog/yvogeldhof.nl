@@ -16,7 +16,7 @@ export default function MyApp(props: MyAppProps) {
   const { Component, emotionCache = muiCache, pageProps } = props
 
   return (
-    <CacheProvider value={muiCache}>
+    <CacheProvider value={emotionCache}>
       <ColorModeContextProvider>
         <BlogThemeProvider>
           <CssBaseline />
