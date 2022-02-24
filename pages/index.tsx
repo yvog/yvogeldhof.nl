@@ -1,4 +1,4 @@
-import { Container, Divider, Typography } from '@mui/material'
+import { Container, Divider } from '@mui/material'
 import { getAllNodes } from 'next-mdx/server'
 import { Footer } from '../components/Footer/Footer'
 import { Header } from '../components/Header/Header'
@@ -13,9 +13,11 @@ export default function IndexPage(props: PageProps) {
   const { posts } = props
 
   return (
-    <Container maxWidth={'md'}>
+    <Container maxWidth="md">
       <Header />
+      <Divider />
       <PostItemList posts={posts} />
+      <Divider />
       <Footer />
     </Container>
   )

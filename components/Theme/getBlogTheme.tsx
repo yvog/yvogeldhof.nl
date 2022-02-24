@@ -1,33 +1,33 @@
-import { PaletteMode } from '@mui/material'
-import { amber, deepOrange, grey } from '@mui/material/colors'
+import { PaletteMode, PaletteOptions } from '@mui/material'
 
-const lightTheme = {
-  // palette values for light mode
-  primary: amber,
-  divider: amber[200],
-  text: {
-    primary: grey[900],
-    secondary: grey[800],
-  },
+const lightTheme: PaletteOptions = {
+  //
 }
 
-const darkTheme = {
-  // palette values for dark mode
-  primary: deepOrange,
-  divider: deepOrange[700],
-  background: {
-    default: deepOrange[900],
-    paper: deepOrange[900],
-  },
-  text: {
-    primary: '#fff',
-    secondary: grey[500],
-  },
+const darkTheme: PaletteOptions = {
+  //
 }
 
 export const getBlogTheme = (mode: PaletteMode) => ({
   palette: {
     mode,
     ...(mode === 'light' ? lightTheme : darkTheme),
+  },
+  typography: {
+    h1: {
+      fontSize: 48,
+    },
+    h2: {
+      fontSize: 36,
+    },
+    h3: {
+      fontSize: 24,
+    },
+    body1: {
+      letterSpacing: '0.06em',
+    },
+    body2: {
+      letterSpacing: '0.06em',
+    },
   },
 })
