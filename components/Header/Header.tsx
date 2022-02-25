@@ -11,6 +11,7 @@ const headerClasses = (theme: Theme): ClassNames => ({
   inner: {
     display: 'flex',
     justifyContent: 'space-between',
+    alignItems: 'center',
     marginBottom: theme.spacing(4),
   },
   logo: {
