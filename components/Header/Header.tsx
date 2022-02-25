@@ -1,10 +1,10 @@
-import { Link as MuiLink } from '@mui/material'
+import { Link as MuiLink, Theme } from '@mui/material'
 import Link from 'next/link'
-import { makeStyles } from 'tss-react/mui'
+import { ClassNames, useClasses } from '../../hooks/useClasses'
 import { AboutMe } from '../AboutMe/AboutMe'
 import { ColorModeToggle } from '../ColorModeToggle/ColorModeToggle'
 
-const useStyles = makeStyles()((theme) => ({
+const headerClasses = (theme: Theme): ClassNames => ({
   root: {
     margin: `${theme.spacing(4)} 0 ${theme.spacing(4)} 0`,
   },
@@ -18,21 +18,16 @@ const useStyles = makeStyles()((theme) => ({
     flexWrap: 'wrap',
     gap: theme.spacing(1),
   },
-}))
+})
 
 export const Header = () => {
-  const { classes } = useStyles()
+  const classes = useClasses(headerClasses)
 
   return (
-    <header className={classes.root}>
-      <div className={classes.inner}>
+    <header css={classes.root}>
+      <div css={classes.inner}>
         <Link href="/" passHref>
-          <MuiLink
-            variant="h1"
-            underline="hover"
-            color="primary"
-            className={classes.logo}
-          >
+          <MuiLink variant="h1" underline="hover" color="primary" css={classes.logo}>
             <span>Yvo Geldhof&apos;s</span>
             <span>tech blog</span>
           </MuiLink>

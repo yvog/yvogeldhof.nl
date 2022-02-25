@@ -1,4 +1,5 @@
-import { makeStyles } from 'tss-react/mui'
+import { Theme } from '@mui/material'
+import { ClassNames, useClasses } from '../../hooks/useClasses'
 import { Post } from '../../types'
 import { PostItem } from '../PostItem/PostItem'
 
@@ -6,21 +7,21 @@ type PostItemListProps = {
   posts: Post[]
 }
 
-const useStyles = makeStyles()((theme) => ({
+const postItemListClasses = (theme: Theme): ClassNames => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
     gap: theme.spacing(4),
     margin: `${theme.spacing(4)} 0 ${theme.spacing(4)} 0`,
   },
-}))
+})
 
 export const PostItemList = (props: PostItemListProps) => {
   const { posts } = props
-  const { classes } = useStyles()
+  const classes = useClasses(postItemListClasses)
 
   return (
-    <section className={classes.root}>
+    <section css={classes.root}>
       {posts.map((post: Post) => (
         <PostItem key={post.url} {...post} />
       ))}

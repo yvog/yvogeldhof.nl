@@ -1,20 +1,20 @@
-import { Link as MuiLink, Typography } from '@mui/material'
+import { Link as MuiLink, Theme, Typography } from '@mui/material'
 import Link from 'next/link'
-import { makeStyles } from 'tss-react/mui'
+import { ClassNames, useClasses } from '../../hooks/useClasses'
 import { Post } from '../../types'
 
 type PostItemProps = Post
 
-const useStyles = makeStyles()((theme) => ({
+const postItemClasses = (theme: Theme): ClassNames => ({
   title: {
     display: 'block',
     margin: `${theme.spacing(1)} 0 ${theme.spacing(1)} 0`,
   },
-}))
+})
 
 export const PostItem = (props: PostItemProps) => {
   const { url, frontMatter, content } = props
-  const { classes } = useStyles()
+  const classes = useClasses(postItemClasses)
   const sneakPeekMaxChars = 175
 
   return (
@@ -23,7 +23,7 @@ export const PostItem = (props: PostItemProps) => {
         {frontMatter?.date}
       </Typography>
       <Link href={url ?? ''} passHref>
-        <MuiLink underline="hover" variant="h2" className={classes.title}>
+        <MuiLink underline="hover" variant="h2" css={classes.title}>
           {frontMatter?.title}
         </MuiLink>
       </Link>

@@ -1,18 +1,18 @@
 import { GitHub, LinkedIn } from '@mui/icons-material'
-import { IconButton, Typography } from '@mui/material'
-import { makeStyles } from 'tss-react/mui'
+import { IconButton, Theme, Typography } from '@mui/material'
+import { ClassNames, useClasses } from '../../hooks/useClasses'
 
-const useStyles = makeStyles()((theme) => ({
+const footerClasses = (theme: Theme): ClassNames => ({
   root: {
     margin: `${theme.spacing(2)} 0 ${theme.spacing(2)} 0`,
   },
-}))
+})
 
 export const Footer = () => {
-  const { classes } = useStyles()
+  const classes = useClasses(footerClasses)
 
   return (
-    <footer className={classes.root}>
+    <footer css={classes.root}>
       <Typography variant="caption">
         &copy; Copyright {new Date().getFullYear()} - Yvo Geldhof, all rights reserved.
       </Typography>
