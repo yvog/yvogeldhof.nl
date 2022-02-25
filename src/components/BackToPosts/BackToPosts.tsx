@@ -1,6 +1,5 @@
 import { ArrowBackIos } from '@mui/icons-material'
 import { Button, Theme } from '@mui/material'
-import { makeStyles } from 'tss-react/mui'
 import { ClassNames, useClasses } from '../../hooks/useClasses'
 
 const backToPostsClasses = (theme: Theme): ClassNames => ({

@@ -1,5 +1,4 @@
-import { ArrowBackIos } from '@mui/icons-material'
-import { Button, Container, Divider, Typography } from '@mui/material'
+import { Container, Divider, Typography } from '@mui/material'
 import { useHydrate } from 'next-mdx/client'
 import { getMdxNode, getMdxPaths } from 'next-mdx/server'
 import { BackToPosts } from '../../components/BackToPosts/BackToPosts'
