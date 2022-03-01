@@ -14,20 +14,39 @@ export const getTheme = (mode: PaletteMode) => ({
     ...(mode === 'light' ? lightTheme : darkTheme),
   },
   typography: {
+    fontFamily:
+      '-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif',
     h1: {
-      fontSize: 48,
+      fontSize: 40,
+      fontWeight: 500,
     },
     h2: {
-      fontSize: 36,
+      fontSize: 34,
+      fontWeight: 500,
     },
     h3: {
-      fontSize: 24,
+      fontSize: 30,
+      fontWeight: 500,
+    },
+    h4: {
+      fontSize: 26,
+      fontWeight: 500,
+    },
+    h5: {
+      fontSize: 22,
+      fontWeight: 500,
+    },
+    h6: {
+      fontSize: 18,
+      fontWeight: 500,
     },
     body1: {
-      letterSpacing: '0.06em',
+      fontSize: 16,
+      fontWeight: 400,
     },
     body2: {
-      letterSpacing: '0.06em',
+      fontSize: 14,
+      fontWeight: 400,
     },
   },
 })
