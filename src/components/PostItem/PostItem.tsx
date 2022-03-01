@@ -7,7 +7,7 @@ type PostItemProps = Post
 
 const postItemClasses = (theme: Theme): ClassNames => ({
   title: {
-    display: 'block',
+    display: 'inline-block',
     margin: `${theme.spacing(1)} 0 ${theme.spacing(1)} 0`,
   },
 })
@@ -19,7 +19,7 @@ export const PostItem = (props: PostItemProps) => {
 
   return (
     <article>
-      <Typography component="span" variant="caption">
+      <Typography component="div" variant="caption">
         {frontMatter?.date}
       </Typography>
       <Link href={url ?? ''} passHref>
