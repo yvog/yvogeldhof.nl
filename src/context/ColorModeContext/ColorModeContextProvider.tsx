@@ -6,10 +6,12 @@ type ColorModeContextProviderProps = {
   children: React.ReactNode
 }
 
+const COLOR_MODE_PREFERENCE_KEY = 'yvogeldhof_nl_colormode_preference'
+
 function getColorModePreference(): PaletteMode | null {
   try {
     const preference = window.localStorage.getItem(
-      'yvogeldhof_nl_colormode_preference'
+      COLOR_MODE_PREFERENCE_KEY
     ) as PaletteMode
 
     return preference
@@ -22,7 +24,7 @@ function getColorModePreference(): PaletteMode | null {
 
 function setColorModePreference(mode: PaletteMode): boolean {
   try {
-    window.localStorage.setItem('yvogeldhof_nl_colormode_preference', mode)
+    window.localStorage.setItem(COLOR_MODE_PREFERENCE_KEY, mode)
     return true
   } catch (error) {
     console.error('Could not set color mode preference: ', error)
