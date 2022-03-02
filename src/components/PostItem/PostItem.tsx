@@ -2,6 +2,7 @@ import { Link as MuiLink, Theme, Typography } from '@mui/material'
 import Link from 'next/link'
 import { ClassNames, useClasses } from '../../hooks/useClasses'
 import { Post } from '../../types'
+import { createPostSneakPeek } from '../../util/createPostSneakPeek'
 
 type PostItemProps = Post
 
@@ -15,7 +16,7 @@ const postItemClasses = (theme: Theme): ClassNames => ({
 export const PostItem = (props: PostItemProps) => {
   const { url, frontMatter, content } = props
   const classes = useClasses(postItemClasses)
-  const sneakPeekMaxChars = 175
+  const postSneakPeek = createPostSneakPeek(content ?? '')
 
   return (
     <article>
@@ -27,9 +28,7 @@ export const PostItem = (props: PostItemProps) => {
           {frontMatter?.title}
         </MuiLink>
       </Link>
-      <Typography>
-        {content?.substring(0, Math.min(content.length, sneakPeekMaxChars))}...
-      </Typography>
+      <Typography>{postSneakPeek}</Typography>
     </article>
   )
 }
