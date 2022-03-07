@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 
 type PageMetaProps = {
   title: string
-  robots: string
+  robots?: string
   description?: string
   keywords?: string[]
 }
