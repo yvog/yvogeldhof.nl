@@ -74,7 +74,7 @@ pre[class*='language-'].language-scss > code {
 }
 
 code:not([class*='language-']) {
-  background: rgb(231 231 231);
+  background: rgba(231, 231, 231, 0.5);
   padding: 4px 4px;
   border-radius: 4px;
   font-family: Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', 'Courier New', monospace;
