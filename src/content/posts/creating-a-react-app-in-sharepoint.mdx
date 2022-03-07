@@ -1,0 +1,71 @@
+---
+title: Create a React app that runs in SharePoint
+excerpt: SharePoint web parts are small applications added to a communication and/or team site within a SharePoint tenant. This post covers useful techniques to create an app that adds new functionality to your SharePoint site.
+category:
+  - SharePoint
+  - React
+date: '2022-03-07'
+---
+
+SharePoint web parts are small applications added to a communication and/or team site within a SharePoint tenant.
+Communication sites are in contrast to team sites responsive. They contain a full width column which allows us to create responsive React applications as a web part.
+This post covers useful techniques to create an app that adds new functionality to your SharePoint site. Please note, this is not an in-depth guide.
+
+## Creating the app
+
+Follow [Microsoft's guide](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part#create-a-new-web-part-project) to
+generate a new web part project. To enable full width support, add the following flag to the `{name}.manifest.json` config file:
+
+```javascript
+...
+"supportsFullBleed": true,
+...
+```
+
+### Starting the development environment
+
+Run `npm run serve` in the root directory.
+Go to `https://{tenant}.sharepoint.com/sites/{site}/SitePages/{page}.aspx?debug=true&noredir=true&debugManifestsFile=https%3A%2F%2Flocalhost%3A4321%2Ftemp%2Fmanifests.js` in the browser, and click "Load debug scripts" to start the development environment. Don't forget to actually add your web part to a full width column on the site ;)
+
+### Slow build times?!
+
+[spfx-fast-serve](https://github.com/s-KaiNet/spfx-fast-serve) to the rescue. No idea why this isn't built-in.
+
+## Styling
+
+[Fluent UI](https://developer.microsoft.com/en-us/fluentui) by Microsoft contains React components which come in handy for us to blend our web part with the site.
+To blend even more, [theme colors](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/use-theme-colors-in-your-customizations#use-theme-colors-in-the-sharepoint-framework) are available. Using CSS Modules you can do the following to reference the Sharepoint's global theme.
+
+```css
+.className {
+  color: '[theme: themeDarkAlt]';
+}
+```
+
+## Routing
+
+Normally you wouldn't need routing, because web parts are generally used to display additional information on the SharePoint site.
+However, we can create a React application as a web part, including routing, using the [HashRouter](https://v5.reactrouter.com/web/api/HashRouter).
+As the deployment url is something like `tenant.sharepoint.com/sites/MySite`, HashRouter simply routes based on the url hash, making the routes like this: `tenant.sharepoint.com/sites/MySite#/my/route/here`.
+
+## Data
+
+There are [several API's](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/connect-to-sharepoint) available to use. We might choose the Microsoft Graph API.
+Start fetching data by creating a Graph API client in your `BaseClientSideWebPart` class:
+
+```javascript
+this.context.msGraphClientFactory.getClient().then((client: MSGraphClient) => {
+  //
+})
+```
+
+## Deployment
+
+Run the following commands to create a SharePoint add-ins package file. Upload the resulting .sppkg file (found in the `sharepoint` directory) to your site collection app catalog. Add it to a column on your site, and publish the page.
+
+```javascript
+gulp bundle --ship
+gulp package-solution --ship
+```
+
+Cheers!
