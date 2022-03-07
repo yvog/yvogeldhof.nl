@@ -6,7 +6,7 @@ import { Header } from '../../components/Header/Header'
 import { MdxContent } from '../../components/MdxContent/MdxContent'
 import { PageMeta } from '../../components/PageMeta/PageMeta'
 import { Post } from '../../types'
-import { getPost, getPostsPaths } from '../../util/posts'
+import { generatePostPaths, getPost } from '../../util/posts'
 
 type PostPageProps = {
   post: Post
@@ -40,7 +40,7 @@ export default function PostPage(props: PostPageProps) {
 }
 
 export async function getStaticPaths() {
-  const paths = await getPostsPaths()
+  const paths = await generatePostPaths<GetStaticPropsContext<PostPageParams>>()
 
   return {
     paths,
