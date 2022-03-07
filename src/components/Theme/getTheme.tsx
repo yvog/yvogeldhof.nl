@@ -25,15 +25,15 @@ export const getTheme = (mode: PaletteMode) => ({
       fontWeight: 500,
     },
     h3: {
-      fontSize: 30,
-      fontWeight: 500,
-    },
-    h4: {
       fontSize: 26,
       fontWeight: 500,
     },
-    h5: {
+    h4: {
       fontSize: 22,
+      fontWeight: 500,
+    },
+    h5: {
+      fontSize: 20,
       fontWeight: 500,
     },
     h6: {
@@ -42,11 +42,12 @@ export const getTheme = (mode: PaletteMode) => ({
     },
     body1: {
       fontSize: 16,
-      fontWeight: 400,
+      fontWeight: 350,
+      lineHeight: 1.82,
     },
     body2: {
       fontSize: 14,
-      fontWeight: 400,
+      fontWeight: 350,
     },
   },
 })

@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 
 type PageMetaProps = {
   title: string
-  description: string
+  description?: string
   keywords: string[]
 }
 
@@ -30,6 +30,9 @@ export const PageMeta = (props: PageMetaProps) => {
     ...keywords,
   ].join(',')
   const pageCanonical = `https://yvogeldhof.nl${pageUrl}`
+  const descr =
+    description ??
+    'Yvo Geldhof writes about front-end development, game development and everything inbetween as long as it is about tech.'
 
   return (
     <>
@@ -37,7 +40,7 @@ export const PageMeta = (props: PageMetaProps) => {
         <meta charSet="utf-8" />
         <meta name="robots" content="index, follow" />
         <title>{pageTitle}</title>
-        <meta name="description" content={description}></meta>
+        <meta name="description" content={descr}></meta>
         {/* <meta name="theme-color" content={theme.palette.primary.main} /> */}
         <meta name="keywords" content={pageKeywords} />
         <meta name="language" content="english" />
@@ -50,7 +53,7 @@ export const PageMeta = (props: PageMetaProps) => {
         <meta property="og:type" content="article" />
         <meta property="og:locale" content="en_US" />
         <meta property="og:title" content={pageTitle} />
-        <meta property="og:description" content={description} />
+        <meta property="og:description" content={descr} />
         {/* <meta property="og:image" content="" /> */}
         <meta property="og:url" content={pageCanonical} />
         <meta property="og:site_name" content={siteName} />

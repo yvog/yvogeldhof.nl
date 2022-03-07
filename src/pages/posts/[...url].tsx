@@ -1,43 +1,37 @@
-import { Container, Divider, Typography } from '@mui/material'
-import { useHydrate } from 'next-mdx/client'
-import { getMdxNode, getMdxPaths } from 'next-mdx/server'
+import { Container, Divider } from '@mui/material'
+import { GetStaticPropsContext } from 'next/types'
 import { BackToPosts } from '../../components/BackToPosts/BackToPosts'
 import { Footer } from '../../components/Footer/Footer'
 import { Header } from '../../components/Header/Header'
 import { MdxContent } from '../../components/MdxContent/MdxContent'
 import { PageMeta } from '../../components/PageMeta/PageMeta'
 import { Post } from '../../types'
-import { createPostSneakPeek } from '../../util/createPostSneakPeek'
+import { getPost, getPostsPaths } from '../../util/posts'
 
 type PostPageProps = {
   post: Post
 }
 
-export default function PostPage({ post }: PostPageProps) {
-  const content = useHydrate(post)
-  const postTitle = post.frontMatter?.title
-  const postSneakPeek = createPostSneakPeek(post?.content ?? '')
+type PostPageParams = {
+  url: string
+}
+
+export default function PostPage(props: PostPageProps) {
+  const { post } = props
+  const postTitle = post.meta?.title ?? 'Post'
 
   return (
     <>
       <PageMeta
         title={postTitle ?? 'Post'}
-        description={postSneakPeek}
+        description={post.meta?.excerpt}
         keywords={[...(postTitle?.split(' ') ?? []), 'posts']}
       />
       <Container maxWidth="md" component="article">
         <Header />
-        <Divider />
-
         <BackToPosts />
-
-        <MdxContent>
-          <Typography variant="h2" component="h1">
-            {postTitle}
-          </Typography>
-          {content}
-        </MdxContent>
-
+        <Divider />
+        <MdxContent source={post.compiled} title={post.meta?.title ?? ''} />
         <Divider />
         <Footer />
       </Container>
@@ -46,16 +40,18 @@ export default function PostPage({ post }: PostPageProps) {
 }
 
 export async function getStaticPaths() {
-  const paths = await getMdxPaths('post')
+  const paths = await getPostsPaths()
 
   return {
-    paths: paths,
+    paths,
     fallback: false,
   }
 }
 
-export async function getStaticProps(context: any) {
-  const post = await getMdxNode<Post>('post', context)
+export async function getStaticProps({
+  params,
+}: GetStaticPropsContext<PostPageParams>) {
+  const post = await getPost(params?.url ?? '')
 
   if (!post) {
     return {

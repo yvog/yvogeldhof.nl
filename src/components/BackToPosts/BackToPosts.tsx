@@ -4,7 +4,7 @@ import { ClassNames, useClasses } from '../../hooks/useClasses'
 
 const backToPostsClasses = (theme: Theme): ClassNames => ({
   root: {
-    margin: `${theme.spacing(2)} 0 0 0`,
+    margin: `0 0 ${theme.spacing(2)} 0`,
   },
 })
 

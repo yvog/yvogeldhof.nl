@@ -1,7 +1,14 @@
-import { MdxNode } from 'next-mdx/server'
+import { MDXRemoteSerializeResult } from 'next-mdx-remote'
 
-type Post = MdxNode<{
+type PostMeta = {
   title: string
-  category?: string
-  date?: string
-}>
+  excerpt: string
+  category: string[]
+  date: string
+}
+
+type Post = {
+  url: string
+  meta: PostMeta | undefined
+  compiled: MDXRemoteSerializeResult
+}

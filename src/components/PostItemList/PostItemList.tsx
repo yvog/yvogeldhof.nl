@@ -22,6 +22,7 @@ export const PostItemList = (props: PostItemListProps) => {
 
   return (
     <section css={classes.root}>
+      {posts.length === 0 && <div>There are no posts yet.</div>}
       {posts.map((post: Post) => (
         <PostItem key={post.url} {...post} />
       ))}
