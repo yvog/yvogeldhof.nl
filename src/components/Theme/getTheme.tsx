@@ -50,4 +50,13 @@ export const getTheme = (mode: PaletteMode) => ({
       fontWeight: 350,
     },
   },
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          overflowY: 'scroll',
+        },
+      },
+    },
+  },
 })
