@@ -1,6 +1,7 @@
 import { Link as MuiLink, Theme, Typography } from '@mui/material'
 import Link from 'next/link'
 import { ClassNames, useClasses } from '../../hooks/useClasses'
+import { Post } from '../../types'
 
 type PostItemProps = Post
 
