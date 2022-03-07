@@ -1,11 +1,17 @@
 import { PaletteMode, PaletteOptions } from '@mui/material'
 
 const lightTheme: PaletteOptions = {
-  //
+  background: {
+    default: '#f8f8f8',
+    paper: 'rgb(231 231 231)',
+  },
 }
 
 const darkTheme: PaletteOptions = {
-  //
+  background: {
+    default: '#102736',
+    paper: 'rgb(231 231 231)',
+  },
 }
 
 export const getTheme = (mode: PaletteMode) => ({
