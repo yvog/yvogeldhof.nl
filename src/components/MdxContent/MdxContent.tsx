@@ -15,6 +15,7 @@ const mdxContentClasses = (theme: Theme): ClassNames => ({
   root: {
     margin: `${theme.spacing(2)} 0 ${theme.spacing(2)} 0`,
     wordBreak: 'break-word',
+    overflow: 'hidden',
   },
 })
 
