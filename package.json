@@ -9,6 +9,9 @@
     "lint": "next lint",
     "format": "npx prettier --write \"{pages,components}/**/*.{ts,tsx,js,json}\" "
   },
+  "engines": {
+    "node": ">=16.14.0 <17"
+  },
   "dependencies": {
     "@emotion/react": "^11.8.1",
     "@emotion/server": "^11.4.0",
