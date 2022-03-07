@@ -14,7 +14,7 @@ export const Footer = () => {
   return (
     <footer css={classes.root}>
       <Typography variant="caption">
-        &copy; Copyright {new Date().getFullYear()} - Yvo Geldhof, all rights reserved.
+        &copy; {new Date().getFullYear()} - all rights reserved.
       </Typography>
 
       <IconButton
