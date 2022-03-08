@@ -4,6 +4,7 @@ import type { AppProps } from 'next/app'
 import { BlogThemeProvider } from '../components/Theme/BlogThemeProvider'
 import createEmotionCache from '../components/Theme/createEmotionCache'
 import { ColorModeContextProvider } from '../context/ColorModeContext/ColorModeContextProvider'
+import '../../public/styles/prism-oceanic.css'
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const muiCache = createEmotionCache()

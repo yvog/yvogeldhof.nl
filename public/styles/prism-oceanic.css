@@ -81,6 +81,16 @@ code:not([class*='language-']) {
   margin-bottom: 2px;
 }
 
+code[class*='language-'],
+pre[class*='language-'] {
+  font-size: 14px;
+}
+
+/* Code blocks */
+pre[class*='language-'] {
+  border-radius: 8px;
+}
+
 .token.atrule {
   color: #c792ea;
 }
@@ -233,14 +243,4 @@ code:not([class*='language-']) {
 
 .token.variable {
   color: #f07178;
-}
-
-code[class*='language-'],
-pre[class*='language-'] {
-  font-size: 14px;
-}
-
-/* Code blocks */
-pre[class*='language-'] {
-  border-radius: 8px;
 }
