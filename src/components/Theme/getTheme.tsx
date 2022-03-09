@@ -53,6 +53,11 @@ export const getTheme = (mode: PaletteMode) => ({
       fontSize: 14,
       fontWeight: 350,
     },
+    caption: {
+      ...{
+        color: mode === 'dark' ? 'rgba(255, 255, 255, 0.35)' : 'rgba(0, 0, 0, 0.5)',
+      },
+    },
   },
   components: {
     MuiCssBaseline: {

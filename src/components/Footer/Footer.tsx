@@ -13,8 +13,8 @@ export const Footer = () => {
 
   return (
     <footer css={classes.root}>
-      <Typography variant="caption">
-        &copy; {new Date().getFullYear()} - all rights reserved.
+      <Typography variant="body2" component="span">
+        &copy; {new Date().getFullYear()}, all rights reserved.
       </Typography>
 
       <IconButton

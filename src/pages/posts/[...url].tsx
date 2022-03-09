@@ -31,7 +31,11 @@ export default function PostPage(props: PostPageProps) {
         <Header />
         <BackToPosts />
         <Divider />
-        <MdxContent source={post.compiled} title={post.meta?.title ?? ''} />
+        <MdxContent
+          source={post.compiled}
+          title={post.meta?.title ?? ''}
+          date={post.meta?.date ?? ''}
+        />
         <Divider />
         <Footer />
       </Container>

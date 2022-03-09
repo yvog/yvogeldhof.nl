@@ -2,6 +2,7 @@ import { Link as MuiLink, Theme, Typography } from '@mui/material'
 import Link from 'next/link'
 import { ClassNames, useClasses } from '../../hooks/useClasses'
 import { Post } from '../../types'
+import { PublishedOn } from '../PublishedOn/PublishedOn'
 
 type PostItemProps = Post
 
@@ -18,9 +19,7 @@ export const PostItem = (props: PostItemProps) => {
 
   return (
     <article>
-      <Typography component="div" variant="caption">
-        {meta?.date}
-      </Typography>
+      <PublishedOn date={meta?.date ?? ''} />
       <Link href={url ?? ''} passHref>
         <MuiLink underline="hover" variant="h2" css={classes.title}>
           {meta?.title}
