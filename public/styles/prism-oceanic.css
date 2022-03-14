@@ -79,6 +79,7 @@ code:not([class*='language-']) {
   border-radius: 4px;
   font-family: Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', 'Courier New', monospace;
   margin-bottom: 2px;
+  font-size: 14px;
 }
 
 code[class*='language-'],
