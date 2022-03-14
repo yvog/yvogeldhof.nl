@@ -1,5 +1,6 @@
 import createEmotionServer from '@emotion/server/create-instance'
 import Document, { Head, Html, Main, NextScript } from 'next/document'
+import Script from 'next/script'
 import createEmotionCache from '../components/Theme/createEmotionCache'
 
 /*
@@ -18,21 +19,18 @@ export default class MyDocument extends Document {
           {/* Inject MUI styles first to match with the prepend: true configuration. */}
           {(this.props as any).emotionStyleTags}
 
-          <script
-            async
+          <Script
+            strategy="afterInteractive"
             src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
           />
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
+          <Script id="gtag" strategy="afterInteractive">
+            {`
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-            
               gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
-            `,
-            }}
-          />
+            `}
+          </Script>
         </Head>
         <body>
           <Main />
