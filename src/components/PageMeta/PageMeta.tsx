@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import { useRouter } from 'next/router'
 
 type PageMetaProps = {
   title: string
@@ -10,11 +9,8 @@ type PageMetaProps = {
 
 export const PageMeta = (props: PageMetaProps) => {
   const { title, robots, description, keywords } = props
-
-  const router = useRouter()
   const siteName = "Yvo Geldhof's tech blog"
   const pageTitle = `${title} - ${siteName}`
-  const pageUrl = router.asPath
   const pageKeywords = [
     'tech',
     'react',
@@ -30,7 +26,6 @@ export const PageMeta = (props: PageMetaProps) => {
     'geldhof',
     ...(keywords ?? []),
   ].join(',')
-  const pageCanonical = `https://yvogeldhof.nl${pageUrl}`
   const descr =
     description ??
     'Yvo Geldhof writes about front-end development, game development and everything inbetween as long as it is about tech.'
@@ -49,14 +44,12 @@ export const PageMeta = (props: PageMetaProps) => {
         <meta name="author" content="Yvo Geldhof" />
         <meta name="web_author" content="Yvo Geldhof" />
         <meta name="HandheldFriendly" content="true" />
-        <link rel="canonical" href={pageCanonical} />
 
         <meta property="og:type" content="article" />
         <meta property="og:locale" content="en_US" />
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={descr} />
         {/* <meta property="og:image" content="" /> */}
-        <meta property="og:url" content={pageCanonical} />
         <meta property="og:site_name" content={siteName} />
       </Head>
     </>
