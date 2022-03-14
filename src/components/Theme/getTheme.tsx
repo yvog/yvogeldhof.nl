@@ -8,7 +8,10 @@ const lightTheme: PaletteOptions = {
 
 const darkTheme: PaletteOptions = {
   background: {
-    default: '#102736',
+    default: '#001928',
+  },
+  text: {
+    primary: 'rgba(213, 233, 255, 0.96)',
   },
 }
 

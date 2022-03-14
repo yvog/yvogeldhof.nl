@@ -21,7 +21,7 @@ pre[class*='language-'] ::-moz-selection {
   text-shadow: none;
   opacity: 1;
   color: #eee;
-  background: #083452;
+  background: #012338;
 }
 
 code[class*='language-']::selection,
@@ -31,7 +31,7 @@ pre[class*='language-'] ::selection {
   text-shadow: none;
   opacity: 1;
   color: #eee;
-  background: #083452;
+  background: #012338;
 }
 
 @media print {
@@ -44,7 +44,7 @@ pre[class*='language-'] ::selection {
 :not(pre) > code[class*='language-'] {
   white-space: normal;
   color: #c3cee3;
-  background: #083452;
+  background: #012338;
   border-radius: 0.2em;
   padding: 0.1em;
 }
@@ -57,7 +57,7 @@ pre[class*='language-'] {
   overflow: auto;
   position: relative;
   color: #c3cee3;
-  background: #083452;
+  background: #012338;
   border-radius: 0;
   margin: 0.5em 0;
   padding: 1.25em 1em;
