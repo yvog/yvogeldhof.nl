@@ -12,11 +12,19 @@ export default class MyDocument extends Document {
         <Head>
           <link rel="shortcut icon" href="/static/favicon.ico" />
 
-          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+          <link
+            rel="preload"
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&family=Source+Sans+Pro&display=swap"
+            as="style"
+            crossOrigin=""
+          />
+
           <link
             href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&family=Source+Sans+Pro&display=swap"
             rel="stylesheet"
+            crossOrigin=""
           />
 
           {/* Inject MUI styles first to match with the prepend: true configuration. */}
@@ -26,14 +34,16 @@ export default class MyDocument extends Document {
             async
             src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
           />
-          <script>
-            {`
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
-            `}
-          </script>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
+           `,
+            }}
+          />
         </Head>
         <body>
           <Main />
