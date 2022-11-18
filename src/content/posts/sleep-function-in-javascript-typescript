@@ -1,0 +1,33 @@
+---
+title: Sleep() function in JavaScript / TypeScript
+excerpt: A little code snippet which allows you to delay your code by x milliseconds, in a way you are used to in languages like C++, C#, Java...
+category:
+  - JavaScript
+  - TypeScript
+  - React
+  - Code Snippets
+date: '2022-08-17'
+---
+
+It's summer time, temperatures outside are rising. Possibly your body is feeling sleepy because of this, and so are… JavaScript and TypeScript. The following code snippet allows you to delay your code by x milliseconds, in a way you are used to in languages like C++, C#, Java...
+
+```javascript
+export const sleep = async (milliseconds: number): Promise<void> => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve();
+    }, milliseconds);
+  });
+};
+```
+
+Usage:
+```javascript
+onClick={async (event) => {
+	await sleep(100);
+	
+	// do some innovative stuff here
+}
+```
+
+Hope it helps!
