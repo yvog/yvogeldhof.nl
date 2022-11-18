@@ -25,7 +25,7 @@ generate a new web part project. In order to enable full width support, add the 
 ...
 ```
 
-By setting this flag, we are able to add the web part to a Full Width Column and the React web part will become mobile responsive as well. We created the React app using the SPFx framework, because we need a .sppkg file to deploy the web part to a SharePoint tenant's site collection app catalog. And this way we are being provided with additional SharePoint API's.
+By setting this flag, we are able to add the web part to a Full Width Column and it will become mobile responsive as well. We created the React app using the SPFx framework, because we need a .sppkg file to deploy the web part to a SharePoint tenant's site collection app catalog. And this way we are being provided with additional SharePoint API's.
 
 ### Starting the development environment
 
@@ -38,7 +38,7 @@ Go to `https://{tenant}.sharepoint.com/sites/{site}/SitePages/{page}.aspx?debug=
 
 ## Styling
 
-[Fluent UI](https://developer.microsoft.com/en-us/fluentui) by Microsoft contains React components, which we can use to blend our web part with other elements on SharePoint. To blend even more, [theme colors](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/use-theme-colors-in-your-customizations#use-theme-colors-in-the-sharepoint-framework) are available. Using CSS Modules you can do something like the following to reference Sharepoint's global theme.
+[Fluent UI](https://developer.microsoft.com/en-us/fluentui) by Microsoft contains React components, which we can use to blend our web part with other elements on SharePoint. To blend even more, [theme colors](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/use-theme-colors-in-your-customizations#use-theme-colors-in-the-sharepoint-framework) are available. Using CSS Modules we can do something like the following to reference Sharepoint's global theme.
 
 ```css
 .className {
