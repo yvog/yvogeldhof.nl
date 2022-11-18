@@ -28,7 +28,11 @@ export default function IndexPage(props: PageProps) {
 }
 
 export async function getStaticProps() {
-  const posts = await getAllPosts()
+  const posts = (await getAllPosts()).sort(
+    (postA: Post, postB: Post) =>
+      new Date(postB.meta?.date ?? '').getTime() -
+      new Date(postA.meta?.date ?? '').getTime()
+  )
 
   return {
     props: {
