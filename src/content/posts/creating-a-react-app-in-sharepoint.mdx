@@ -1,20 +1,23 @@
 ---
-title: Create a React app that runs in SharePoint
-excerpt: SharePoint web parts are small applications added to a communication and/or team site within a SharePoint tenant. This post covers useful techniques to create an app that adds new functionality to your SharePoint site.
+title: Creating a React app that runs in SharePoint
+excerpt: SharePoint web parts add dynamic data to your communication- or team site in a SharePoint tenant. This post describes in summary what you may need to create a React app that runs in SharePoint.
 category:
   - SharePoint
   - React
 date: '2022-03-07'
 ---
 
-SharePoint web parts are small applications added to a communication and/or team site within a SharePoint tenant.
-Communication sites are in contrast to team sites responsive. They contain a full width column which allows us to create responsive React applications as a web part.
-This post covers useful techniques to create an app that adds new functionality to your SharePoint site. Please note, this is not an in-depth guide.
+In SharePoint we can create custom pages and those pages can be customized using small buildings blocks called 'web parts'. Web parts add dynamic data to a SharePoint page. We can create React web parts using the [SPFx Framework](https://learn.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview). When we edit just a few flags, we can create a full page React application, allowing for even more customizations on a SharePoint page, while we still have easy access to SharePoint data, like the currently logged-in user and SharePoint lists. In this post I describe in summary what you may need to create a React app that runs in Sharepoint. We just need the following to get started:
+
+* a SharePoint tenant
+* a Communication Site and custom page created in this tenant
+* a Full Width Column added to that page
+* a SPFx-application project repository
 
 ## Creating the app
 
 Follow [Microsoft's guide](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part#create-a-new-web-part-project) to
-generate a new web part project. To enable full width support, add the following flag to the `{name}.manifest.json` config file:
+generate a new web part project. In order to enable full width support, add the following flag to the `{webpart_name}.manifest.json` configuration file:
 
 ```javascript
 ...
@@ -22,19 +25,20 @@ generate a new web part project. To enable full width support, add the following
 ...
 ```
 
+By setting this flag, we are able to add the web part to a Full Width Column and the React web part will become mobile responsive as well. We created the React app using the SPFx framework, because we need a .sppkg file to deploy the web part to a SharePoint tenant's site collection app catalog.
+
 ### Starting the development environment
 
 Run `npm run serve` in the root directory.
-Go to `https://{tenant}.sharepoint.com/sites/{site}/SitePages/{page}.aspx?debug=true&noredir=true&debugManifestsFile=https%3A%2F%2Flocalhost%3A4321%2Ftemp%2Fmanifests.js` in the browser, and click "Load debug scripts" to start the development environment. Don't forget to actually add your web part to a full width column on the site ;)
+Go to `https://{tenant}.sharepoint.com/sites/{site}/SitePages/{page}.aspx?debug=true&noredir=true&debugManifestsFile=https%3A%2F%2Flocalhost%3A4321%2Ftemp%2Fmanifests.js` in the browser, and click "Load debug scripts" to start the development environment. In this environment you can add the web part to a Full Width Column on the page. This is only the locally running web part and it won't be visible to the end user yet.
 
 ### Slow build times?!
 
-[spfx-fast-serve](https://github.com/s-KaiNet/spfx-fast-serve) to the rescue. No idea why this isn't built-in.
+[spfx-fast-serve](https://github.com/s-KaiNet/spfx-fast-serve) to the rescue. No idea why this isn't built-in yet.
 
 ## Styling
 
-[Fluent UI](https://developer.microsoft.com/en-us/fluentui) by Microsoft contains React components which come in handy for us to blend our web part with the site.
-To blend even more, [theme colors](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/use-theme-colors-in-your-customizations#use-theme-colors-in-the-sharepoint-framework) are available. Using CSS Modules you can do the following to reference the Sharepoint's global theme.
+[Fluent UI](https://developer.microsoft.com/en-us/fluentui) by Microsoft contains React components, which we can use to blend our web part with other elements on SharePoint. To blend even more, [theme colors](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/use-theme-colors-in-your-customizations#use-theme-colors-in-the-sharepoint-framework) are available. Using CSS Modules you can do something like the following to reference Sharepoint's global theme.
 
 ```css
 .className {
@@ -44,9 +48,8 @@ To blend even more, [theme colors](https://docs.microsoft.com/en-us/sharepoint/d
 
 ## Routing
 
-Normally you wouldn't need routing, because web parts are generally used to display additional information on the SharePoint site.
-However, we can create a React application as a web part, including routing, using the [HashRouter](https://v5.reactrouter.com/web/api/HashRouter).
-As the deployment url is something like `tenant.sharepoint.com/sites/MySite`, HashRouter simply routes based on the url hash, making the routes like this: `tenant.sharepoint.com/sites/MySite#/my/route/here`.
+In a standard web part you wouldn't need routing, because web parts are generally used like small building blocks, created to show additional information on a SharePoint page, and not as full page applications. However, we can include routing using the [HashRouter](https://v5.reactrouter.com/web/api/HashRouter).
+As the deployment url is something like `tenant.sharepoint.com/sites/MySite`, HashRouter simply routes based on the url's hash, making the routes something like this: `tenant.sharepoint.com/sites/MySite#/your/route/here`.
 
 ## Data
 
@@ -61,11 +64,13 @@ this.context.msGraphClientFactory.getClient().then((client: MSGraphClient) => {
 
 ## Deployment
 
-Run the following commands to create a SharePoint add-ins package file. Upload the resulting .sppkg file (found in the `sharepoint` directory) to your site collection app catalog. Add it to a column on your site, and publish the page.
+Run the following commands to create a SharePoint add-ins package file (.sppkg file):
 
 ```javascript
 gulp bundle --ship
 gulp package-solution --ship
 ```
+
+We need this .sppkg file (found in the `sharepoint` directory) to deploy the app to a SharePoint tenant's site collection app catalog, so we can add the hosted web part to a Full Width Column on the SharePoint page. After publishing the page, the web part will be visible to the end user, as we reference a web part hosted on SharePoint.
 
 Cheers!
