@@ -37,7 +37,7 @@ export const AboutMe = () => {
           )
         </Typography>
         <Typography variant="body2" css={classes.intro}>
-          writes about front-end development, game development and everything inbetween
+          writes about front-end development, game development and everything in between
           as long as it is about tech.
         </Typography>
       </div>
