@@ -1,0 +1,75 @@
+---
+title: Setting up a scalable front-end for an headless Sitecore JSS app in a multidisciplinary team
+excerpt: How we set up a scalable front end for a Sitecore JSS app and what roles and competences could be in a team for any related project.
+category:
+  - Sitecore JSS
+  - Organizational
+  - Teamwork
+  - Headless
+  - React
+date: '2023-01-01'
+---
+
+Last year I worked as a Creative Front-end Developer on a [Sitecore JSS](https://doc.sitecore.com/xp/en/developers/hd/190/sitecore-headless-development/introducing-sitecore-javascript-rendering-sdk.html) app for my employer [Macaw](https://macaw.nl).
+In this post I describe what a team could look like for any Sitecore Headless JSS project and also how we set up a scalable front end for this project.
+
+## Team Roles
+
+| Role                          | Main Focus                                                                                                                                                                                                                                                                                                                                                                     |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| UX designer                   | Translates the customer wishes into a usable app design, using tools like Figma.                                                                                                                                                                                                                                                                                               |
+| Creative Front-end Developer  | Works on UI components in Storybook, a tool for creating and displaying components in isolation. UI components can be elements like Header, Footer, Sidebar components, Tabs. This developer may have minimal Sitecore experience.                                                                                                                                             |
+| Technical Front-end Developer | This developer should have Sitecore experience in this context, as they create data components: placeholders and JSS renderings. They fetch from whatever data source, in our case Sitecore (using GraphQL) and uses the UI components to display the data.                                                                                                                    |
+| Backend Developer(s)          | Creates Sitecore renderings, data models, fields...                                                                                                                                                                                                                                                                                                                            |
+| DevOps Engineer               | For setting up development pipelines, like automatic PR build checks. Also manages DevOps licenses and makes sure security guidelines are met.                                                                                                                                                                                                                                 |
+| Project Manager               | Their main focus is making sure everyone on the team knows what to work on, and consults with the team about the subjects to focus on. In my case the project manager also kept in touch with the client and communicated their wishes. And also took the role of Deliver Coordinator, by making sure the team is able to deliver in time and if not, looks for new resources. |
+
+In this team setup, we separated the front-end work of two front-end developers. The Creative Front-end Developer focuses on the UI components independently while learning Sitecore.
+The Technical Front-end Developer fetches data from Sitecore and uses the UI components in their JSS renderings (the data components) to show the data. This workflow has several advantages:
+
+- The markup and styling of the UI components can be easily updated.
+- And the data components can fetch data from whatever data source.
+- This means the UI components are reusable for other (even non-Sitecore) projects.
+- We can show the front-end progress to the customer without having any data model ready yet.
+- We can show full pages created in Storybook using dummy data. The Technical Front-end Developer can reference these dummy pages and components in Storybook to help them implement the data components correctly.
+
+## Setting up a scalable front-end
+
+- [Next.js](https://nextjs.org/)
+  - Our Sitecore JSS app already uses Next.js out-of-the-box
+  - I highly recommend this framework, because of the excellent developer experience and build-in features like [SSR](https://nextjs.org/docs/basic-features/data-fetching/get-server-side-props) and [ISR](https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration)
+- [Material UI](https://mui.com/material-ui/getting-started/overview/)
+  - React & TypeScript component framework
+  - Provides accessability, theming, components and many more features out-of-the-box
+- [Storybook](https://storybook.js.org)
+  - A tool for creating and displaying components in isolation
+- [Atomic workflow](https://atomicdesign.bradfrost.com/table-of-contents/)
+  - Divide components into atoms, molecules and organisms
+  - Start creating components by building them up from the smallest bits (atoms/molecules) and merge them together to create bigger components (organisms)
+- [Figma](https://figma.com)
+  - Reference for implementation of the design
+- [TurboRepo](https://turbo.build/)
+  - As we have multiple packages (e.g. the Sitecore JSS app and UI components), let's create a monorepo
+  - TurboRepo is a build tool for a monorepo. Basically Lerna's successor
+  - Generate fast, cached, incremental builds
+  - Also allows us to manage dependencies easily within a monorepo
+
+## Why is this team setup and front-end setup scalable?
+
+**Team setup**
+
+- We always want to offer our services as efficient as possible without wasting resources and money. As the Creative Front-end Developer works independently of the Technical Front-end Developer, they could leave the project earlier when the work is done.
+- We could add a QA Tester after some time, etc..
+
+**Front-end setup**
+
+- UI components are interchangeable to other (even non-Sitecore related) projects.
+- Components can be created without the need of real Sitecore data.
+- Data components can be created by Sitecore developers without the need to worry about markup or styling.
+- Components should use Material UI's theme variables to easily change common styling within the app.
+- The app builds fast, even after the creation of hundreds of components.
+- Node modules are shared across multiple apps in the monorepo, managed by TurboRepo. So 'npm install' will remain fast by installing a single version of a npm package used by multiple packages in the monorepo.
+
+For more information about this setup from a slightly different perspective, I recommend reading the excellent ["Create a scalable head for Sitecore JSS"](https://www.erwinsmit.com/scalable-head/) blog post by my colleague Erwin Smit.
+
+Cheers!
