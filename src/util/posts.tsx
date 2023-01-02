@@ -2,6 +2,7 @@
 import rehypePrism from '@mapbox/rehype-prism'
 import { SerializeOptions } from 'next-mdx-remote/dist/types'
 import { serialize } from 'next-mdx-remote/serialize'
+import remarkGfm from 'remark-gfm'
 import { Post, PostMeta } from '../types'
 import { createPathFromRoot, MdxFile, readFile, readFiles } from './files'
 
@@ -34,6 +35,7 @@ export async function getPost(url: string): Promise<Post | undefined> {
   const options: MDXOptions = {
     mdxOptions: {
       rehypePlugins: [rehypePrism],
+      remarkPlugins: [remarkGfm],
     },
   }
 

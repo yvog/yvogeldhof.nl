@@ -1,0 +1,12 @@
+table thead {
+  text-align: left;
+}
+table tbody td {
+  padding: 8px 0;
+}
+table tbody tr td:first-of-type {
+  min-width: 100px;
+  /* white-space: nowrap; */
+  padding-right: 24px;
+  vertical-align: top;
+}
