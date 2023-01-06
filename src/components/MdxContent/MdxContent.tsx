@@ -15,8 +15,7 @@ const mdxContentClasses = (theme: Theme): ClassNames => ({
     margin: `${theme.spacing(2)} 0 ${theme.spacing(1)} 0`,
     wordBreak: 'break-word',
     overflow: 'hidden',
-    '& > h1,h2,h3': {
-      lineHeight: '1.2em',
+    '& > h1, h2, h3, h4, h5, h6': {
       color: theme.palette.primary.main,
     },
   },
@@ -29,7 +28,7 @@ export const MdxContent = (props: MdxContentProps) => {
   return (
     <div css={classes.root}>
       <PublishedOn date={date} />
-      <Typography variant="h2" component="h1">
+      <Typography variant="h1" component="h1">
         {title}
       </Typography>
       <MDXRemote {...source} components={MdxContentComponents} />
