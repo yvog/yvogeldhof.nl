@@ -18,7 +18,6 @@ const headerClasses = (theme: Theme): ClassNames => ({
     display: 'flex',
     flexWrap: 'wrap',
     gap: theme.spacing(1),
-    ...theme.typography.h5,
   },
 })
 
@@ -29,7 +28,7 @@ export const Header = () => {
     <header css={classes.root}>
       <div css={classes.inner}>
         <Link href="/" passHref>
-          <MuiLink variant="body1" underline="hover" color="primary" css={classes.logo}>
+          <MuiLink variant="h3" underline="hover" color="primary" css={classes.logo}>
             <span>Yvo Geldhof&apos;s tech blog</span>
           </MuiLink>
         </Link>
