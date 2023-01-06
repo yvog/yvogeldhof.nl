@@ -21,7 +21,7 @@ export const PostItem = (props: PostItemProps) => {
     <article>
       <PublishedOn date={meta?.date ?? ''} />
       <Link href={url ?? ''} passHref>
-        <MuiLink underline="hover" variant="h2" css={classes.title}>
+        <MuiLink underline="hover" variant="h5" css={classes.title}>
           {meta?.title}
         </MuiLink>
       </Link>

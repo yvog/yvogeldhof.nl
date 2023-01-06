@@ -12,12 +12,13 @@ const headerClasses = (theme: Theme): ClassNames => ({
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: theme.spacing(4),
+    marginBottom: theme.spacing(2),
   },
   logo: {
     display: 'flex',
     flexWrap: 'wrap',
     gap: theme.spacing(1),
+    ...theme.typography.h5,
   },
 })
 
@@ -28,9 +29,8 @@ export const Header = () => {
     <header css={classes.root}>
       <div css={classes.inner}>
         <Link href="/" passHref>
-          <MuiLink variant="h1" underline="hover" color="primary" css={classes.logo}>
-            <span>Yvo Geldhof&apos;s</span>
-            <span>tech blog</span>
+          <MuiLink variant="body1" underline="hover" color="primary" css={classes.logo}>
+            <span>Yvo Geldhof&apos;s tech blog</span>
           </MuiLink>
         </Link>
         <ColorModeToggle />
