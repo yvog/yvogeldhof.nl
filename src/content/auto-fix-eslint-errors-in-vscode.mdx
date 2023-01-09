@@ -1,0 +1,29 @@
+---
+title: Automatically fix ESLint errors in VS Code
+excerpt: A quick tip on adding rules to the settings.json file in VS Code.
+category:
+  - ESLint
+  - VS Code
+  - React
+date: '2023-01-09'
+---
+
+Quick tip of the day... let VS Code fix ESLint errors automatically when the document is saved.
+Add this to your `settings.json` file, found in the `.vscode` directory in your project.
+
+## Prerequisite
+
+- [ESLint extension for VS Code](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+
+## Snippet
+
+```javascript
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "eslint.validate": ["javascript", "typescript"],
+}
+```
+
+Never fix those 'unnecessary curly braces around strings' errors manually again!
