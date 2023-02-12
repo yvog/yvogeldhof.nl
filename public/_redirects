@@ -1,6 +1,6 @@
 # Redirect domain aliases to primary domain
-https://www.yvogeldhof.nl/* https://yvogeldhof.nl/:splat 308!
+https://www.yvogeldhof.nl/* https://yvogeldhof.nl/:splat 301!
 
 # Redirect default Netlify subdomain to primary domain
-https://yvogdev-blog.netlify.app/* https://yvogeldhof.nl/:splat 308!
-https://www.yvogdev-blog.netlify.app/* https://yvogeldhof.nl/:splat 308!
+https://yvogdev-blog.netlify.app/* https://yvogeldhof.nl/:splat 301!
+https://www.yvogdev-blog.netlify.app/* https://yvogeldhof.nl/:splat 301!
