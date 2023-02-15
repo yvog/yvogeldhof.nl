@@ -10,10 +10,3 @@ npm run dev
 ```
 
 Blog is now running locally at [http://localhost:3000](http://localhost:3000).
-
-## Prod
-
-```bash
-npm i
-npm run build
-```
