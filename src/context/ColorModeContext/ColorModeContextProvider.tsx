@@ -35,7 +35,7 @@ function setColorModePreference(mode: PaletteMode): boolean {
 
 export const ColorModeContextProvider = (props: ColorModeContextProviderProps) => {
   const { children } = props
-  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)')
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)', { noSsr: true })
   const [mode, setMode] = useState<PaletteMode | undefined>(undefined)
 
   useEffect(() => {

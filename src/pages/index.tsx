@@ -1,8 +1,9 @@
-import { Container, Divider } from '@mui/material'
-import { Footer } from '../components/Footer/Footer'
-import { Header } from '../components/Header/Header'
+import { useState } from 'react'
+import { Filters } from '../components/Filters/Filters'
+import { PageLayout } from '../components/PageLayout/PageLayout'
 import { PageMeta } from '../components/PageMeta/PageMeta'
 import { PostItemList } from '../components/PostItemList/PostItemList'
+import { FilterProvider } from '../context/FilterContext/FilterProvider'
 import { Post } from '../types'
 import { getAllPosts } from '../util/posts'
 
@@ -12,26 +13,30 @@ type PageProps = {
 
 export default function IndexPage(props: PageProps) {
   const { posts } = props
+  const [shownPosts, setShownPosts] = useState<Post[]>(posts);
 
   return (
-    <>
-      <PageMeta title="Posts" keywords={['overview', 'posts']} />
-      <Container maxWidth="md">
-        <Header />
-        <Divider />
-        <PostItemList posts={posts} />
-        <Divider />
-        <Footer />
-      </Container>
-    </>
+    <PageLayout>
+      <FilterProvider>
+        <PageMeta title="Posts" keywords={['overview', 'posts']} />
+
+        <Filters
+          posts={posts}
+          onPostsFiltered={(newFilteredPosts: Post[]) => setShownPosts(newFilteredPosts)}
+        />
+
+        <PostItemList posts={shownPosts} />
+      </FilterProvider>
+    </PageLayout>
   )
 }
 
 export async function getStaticProps() {
-  const posts = (await getAllPosts()).sort(
-    (postA: Post, postB: Post) =>
-      new Date(postB.meta?.date ?? '').getTime() -
-      new Date(postA.meta?.date ?? '').getTime()
+  const posts = await getAllPosts();
+
+  posts.sort((postA, postB) =>
+    new Date(postB.meta?.date ?? '').getTime() -
+    new Date(postA.meta?.date ?? '').getTime()
   )
 
   return {

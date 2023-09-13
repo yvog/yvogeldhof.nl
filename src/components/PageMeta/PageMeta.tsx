@@ -9,13 +9,17 @@ type PageMetaProps = {
 
 export const PageMeta = (props: PageMetaProps) => {
   const { title, robots, description, keywords } = props
-  const siteName = "Yvo Geldhof's tech blog"
+  const siteName = "Yvo Geldhof"
   const pageTitle = `${title} - ${siteName}`
   const pageKeywords = [
     'tech',
     'react',
     'JavaScript',
+    'TypeScript',
+    'front end',
     'front-end',
+    'front',
+    'end',
     'game',
     'development',
     'developer',

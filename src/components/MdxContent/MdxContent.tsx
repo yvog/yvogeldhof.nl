@@ -1,7 +1,6 @@
-import { Theme, Typography } from '@mui/material'
+import { Box, Theme, Typography } from '@mui/material'
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
-import { ClassNames, useClasses } from '../../hooks/useClasses'
-import { PublishedOn } from '../PublishedOn/PublishedOn'
+import { formatDateString } from '../../util/dates'
 import { MdxContentComponents } from './MdxContentComponents'
 
 type MdxContentProps = {
@@ -10,28 +9,26 @@ type MdxContentProps = {
   source: MDXRemoteSerializeResult
 }
 
-const mdxContentClasses = (theme: Theme): ClassNames => ({
-  root: {
-    margin: `${theme.spacing(2)} 0 ${theme.spacing(1)} 0`,
-    wordBreak: 'break-word',
-    overflow: 'hidden',
-    '& > h1, h2, h3, h4, h5, h6': {
-      color: theme.palette.primary.main,
-    },
-  },
-})
-
 export const MdxContent = (props: MdxContentProps) => {
   const { source, title, date } = props
-  const classes = useClasses(mdxContentClasses)
 
   return (
-    <div css={classes.root}>
-      <PublishedOn date={date} />
+    <Box sx={(theme: Theme) => ({
+      margin: `${theme.spacing(1)} 0 ${theme.spacing(1)} 0`,
+      wordBreak: 'break-word',
+      overflow: 'hidden',
+      '& > h1, h2, h3, h4, h5, h6': {
+        color: theme.palette.primary.main,
+      },
+    })}>
+      <Typography variant="caption" component="div">
+        {formatDateString(date)}
+      </Typography>
+
       <Typography variant="h1" component="h1">
         {title}
       </Typography>
       <MDXRemote {...source} components={MdxContentComponents} />
-    </div>
+    </Box>
   )
 }

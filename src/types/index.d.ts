@@ -3,7 +3,7 @@ import { MDXRemoteSerializeResult } from 'next-mdx-remote'
 type PostMeta = {
   title: string
   excerpt: string
-  category: string[]
+  categories: string[]
   date: string
 }
 

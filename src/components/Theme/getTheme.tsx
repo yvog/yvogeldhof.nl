@@ -111,6 +111,13 @@ export const getTheme = (mode: PaletteMode) => {
           },
         },
       },
+      MuiInputLabel: {
+        styleOverrides: {
+          root: {
+            color: 'rgba(213, 233, 255, 0.6)'
+          }
+        }
+      }
     },
   }
 }

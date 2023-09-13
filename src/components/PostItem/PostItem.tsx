@@ -1,27 +1,24 @@
 import { Link as MuiLink, Theme, Typography } from '@mui/material'
 import Link from 'next/link'
-import { ClassNames, useClasses } from '../../hooks/useClasses'
 import { Post } from '../../types'
-import { PublishedOn } from '../PublishedOn/PublishedOn'
+import { formatDateString } from '../../util/dates'
 
 type PostItemProps = Post
 
-const postItemClasses = (theme: Theme): ClassNames => ({
-  title: {
-    display: 'inline-block',
-    margin: `${theme.spacing(1)} 0 ${theme.spacing(1)} 0`,
-  },
-})
-
 export const PostItem = (props: PostItemProps) => {
   const { url, meta } = props
-  const classes = useClasses(postItemClasses)
 
   return (
     <article>
-      <PublishedOn date={meta?.date ?? ''} />
+      <Typography variant="caption" component="div">
+        {formatDateString(meta?.date ?? '')}
+      </Typography>
+
       <Link href={url ?? ''} passHref>
-        <MuiLink underline="hover" variant="h3" css={classes.title}>
+        <MuiLink underline="hover" variant="h3" sx={(theme: Theme) => ({
+          display: 'inline-block',
+          margin: `${theme.spacing(1)} 0 ${theme.spacing(1)} 0`,
+        })}>
           {meta?.title}
         </MuiLink>
       </Link>

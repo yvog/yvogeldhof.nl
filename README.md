@@ -1,6 +1,6 @@
 # @yvog/blog
 
-My tech blog running at [https://yvogeldhof.nl](https://yvogeldhof.nl).
+My blog running at [https://yvogeldhof.nl](https://yvogeldhof.nl).
 
 ## Dev
 

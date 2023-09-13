@@ -1,5 +1,4 @@
-import { Theme } from '@mui/material'
-import { ClassNames, useClasses } from '../../hooks/useClasses'
+import { Box, Theme } from '@mui/material'
 import { Post } from '../../types'
 import { PostItem } from '../PostItem/PostItem'
 
@@ -7,25 +6,20 @@ type PostItemListProps = {
   posts: Post[]
 }
 
-const postItemListClasses = (theme: Theme): ClassNames => ({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: theme.spacing(4),
-    margin: `${theme.spacing(4)} 0 ${theme.spacing(4)} 0`,
-  },
-})
-
 export const PostItemList = (props: PostItemListProps) => {
   const { posts } = props
-  const classes = useClasses(postItemListClasses)
 
   return (
-    <section css={classes.root}>
-      {posts.length === 0 && <div>There are no posts yet.</div>}
+    <Box component='section' sx={(theme: Theme) => ({
+      display: 'flex',
+      flexDirection: 'column',
+      gap: theme.spacing(4),
+      margin: `${theme.spacing(4)} 0 ${theme.spacing(4)} 0`,
+    })}>
+      {posts.length === 0 && <div>No posts were found.</div>}
       {posts.map((post: Post) => (
         <PostItem key={post.url} {...post} />
       ))}
-    </section>
+    </Box>
   )
 }

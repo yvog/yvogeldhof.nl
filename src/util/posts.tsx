@@ -1,10 +1,10 @@
-/// @ts-ignore
+// @ts-ignore
 import rehypePrism from '@mapbox/rehype-prism'
 import { SerializeOptions } from 'next-mdx-remote/dist/types'
 import { serialize } from 'next-mdx-remote/serialize'
 import remarkGfm from 'remark-gfm'
 import { Post, PostMeta } from '../types'
-import { createPathFromRoot, MdxFile, readFile, readFiles } from './files'
+import { MdxFile, createPathFromRoot, readFile, readFiles } from './files'
 
 type MDXOptions = Pick<SerializeOptions, 'mdxOptions'>
 

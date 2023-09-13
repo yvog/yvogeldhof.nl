@@ -1,28 +1,26 @@
 import { ArrowBackIos } from '@mui/icons-material'
 import { Button, ButtonProps, Theme } from '@mui/material'
-import { ClassNames, useClasses } from '../../hooks/useClasses'
+import { mergeSx } from '../../util/mergeSx'
 
-const backToPostsClasses = (theme: Theme): ClassNames => ({
-  root: {
-    margin: `0 0 ${theme.spacing(2)} 0`,
-  },
-})
-
-type BackToPostsProps = Pick<ButtonProps, 'className'>
+type BackToPostsProps = Pick<ButtonProps, 'sx'>
 
 export const BackToPosts = (props: BackToPostsProps) => {
-  const { className } = props
-  const classes = useClasses(backToPostsClasses)
+  const { sx } = props
 
   return (
     <Button
       color="primary"
       aria-label="Back to posts"
       href="/"
-      css={classes.root}
-      className={className}
+      sx={mergeSx((theme: Theme) => ({
+        margin: `${theme.spacing(1.5)} 0 0 0`,
+        transform: `translateX(-${theme.spacing(1)})`
+      }), sx)}
     >
-      <ArrowBackIos />
+      <ArrowBackIos sx={{
+        width: 16,
+        height: 16
+      }} />
       Back to posts
     </Button>
   )
