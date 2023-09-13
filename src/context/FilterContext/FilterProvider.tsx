@@ -25,7 +25,7 @@ export const FilterProvider = (props: FilterProviderProps): JSX.Element => {
             facets: {
                 categories: searchParams.has('categories') ? decodeURI(searchParams.get('categories') ?? '').split(',') : []
             }
-        };
+        }
 
         setFilters(searchParamsFilterState)
     }, [])
