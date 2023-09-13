@@ -1,3 +1,4 @@
+import CloseIcon from '@mui/icons-material/Close';
 import FilterAltOutlinedIcon from '@mui/icons-material/FilterAltOutlined';
 import { Box, IconButton, Popover, TextField, debounce } from '@mui/material';
 import { useRouter } from 'next/router';
@@ -18,11 +19,10 @@ export const Filters = ({
 }: FiltersProps) => {
     const [facetsOpened, setFacetsOpened] = useState<boolean>(false);
     const [searchQuery, setSearchQuery] = useState<string>();
-
     const filterIconButtonRef = useRef(null);
 
-    const { filters, setFilters } = useFilterContext();
-    const { asPath, replace: replaceRoute } = useRouter()
+    const { filters, setFilters, clearFilters } = useFilterContext();
+    const { asPath, replace: replaceRoute, push: pushRoute } = useRouter()
 
     useEffect(() => {
         let filteredPosts = posts;
@@ -104,6 +104,7 @@ export const Filters = ({
             />
         </Box>
         <Box>
+
             <IconButton aria-label="filters" onClick={() => setFacetsOpened(true)} ref={filterIconButtonRef} color='primary' title='Toggle filters'>
                 <FilterAltOutlinedIcon fontSize='medium' />
             </IconButton>
@@ -130,6 +131,14 @@ export const Filters = ({
                     />
                 </Box>
             </Popover>
+
+            <IconButton disabled={!filters.query && Object.values(filters.facets).flat().length == 0} aria-label="clear filters" onClick={() => {
+                clearFilters();
+                setSearchQuery('');
+                pushRoute(asPath, { search: '' });
+            }} ref={filterIconButtonRef} color='primary' title='Toggle filters'>
+                <CloseIcon fontSize='medium' />
+            </IconButton>
         </Box>
     </Box>
 }

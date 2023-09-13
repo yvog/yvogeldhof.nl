@@ -30,9 +30,19 @@ export const FilterProvider = (props: FilterProviderProps): JSX.Element => {
         setFilters(searchParamsFilterState)
     }, [])
 
+    const clearFilters = () => {
+        setFilters({
+            query: '',
+            facets: {
+                categories: []
+            }
+        });
+    }
+
     return <FilterContext.Provider value={{
         filters,
         setFilters,
+        clearFilters
     }}>
         {children}
     </FilterContext.Provider>;

@@ -14,6 +14,7 @@ export type FilterState = {
 export type FilterContextValues = {
     filters: FilterState;
     setFilters: Dispatch<SetStateAction<FilterState>>;
+    clearFilters: () => void;
 };
 
 export const FilterContext = createContext<FilterContextValues>({
@@ -24,6 +25,9 @@ export const FilterContext = createContext<FilterContextValues>({
         }
     },
     setFilters: () => {
+        //
+    },
+    clearFilters: () => {
         //
     }
 });
