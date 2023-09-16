@@ -1,8 +1,12 @@
 import { PaletteMode, PaletteOptions } from '@mui/material'
 
 const lightThemePalette: PaletteOptions = {
+  secondary: {
+    main: '#001928'
+  },
   background: {
-    default: '#edf0f3c4',
+    paper: '#edf0f3',
+    default: '#edf0f3',
   },
   text: {
     primary: '#212121',
@@ -10,11 +14,16 @@ const lightThemePalette: PaletteOptions = {
 }
 
 const darkThemePalette: PaletteOptions = {
+  secondary: {
+    main: '#d5e9ff'
+  },
   background: {
+    paper: '#001928',
     default: '#001928',
   },
   text: {
-    primary: 'rgba(213, 233, 255, 0.96)',
+    primary: '#d5e9ff',
+    secondary: '#d5e9ff'
   },
 }
 
@@ -64,7 +73,7 @@ export const getTheme = (mode: PaletteMode) => {
       body2: {
         fontSize: 14,
         fontWeight: 300,
-        fontFamily: fontFamilyBody,
+        fontFamily: fontFamilyBody
       },
       caption: {
         lineHeight: 1.7,
@@ -78,6 +87,7 @@ export const getTheme = (mode: PaletteMode) => {
         styleOverrides: {
           body: {
             overflowY: 'scroll',
+            transition: 'background .15s ease-in-out',
           },
           table: {
             '& thead': {
@@ -99,11 +109,11 @@ export const getTheme = (mode: PaletteMode) => {
             padding: 8,
             paddingLeft: 16,
             borderRadius: 4,
-            background: 'rgba(213, 233, 255, 0.96)',
-            borderLeft: '6px solid rgb(168, 209, 255)',
+            background: '#d5e9ff',
+            borderLeft: '6px solid #a8d1ff',
             ...(mode === 'dark' && {
               background: 'rgba(223, 223, 223, 0.05)',
-              borderLeftColor: 'rgb(56, 93, 124)',
+              borderLeftColor: '#385d7c',
             }),
             p: {
               margin: 0,

@@ -1,7 +1,7 @@
-import { Link as MuiLink, Theme, Typography } from '@mui/material'
-import Link from 'next/link'
+import { Theme, Typography } from '@mui/material'
 import { Post } from '../../types'
 import { formatDateString } from '../../util/dates'
+import { RouteLink } from '../RouteLink/RouteLink'
 
 type PostItemProps = Post
 
@@ -14,14 +14,13 @@ export const PostItem = (props: PostItemProps) => {
         {formatDateString(meta?.date ?? '')}
       </Typography>
 
-      <Link href={url ?? ''} passHref>
-        <MuiLink underline="hover" variant="h3" sx={(theme: Theme) => ({
-          display: 'inline-block',
-          margin: `${theme.spacing(1)} 0 ${theme.spacing(1)} 0`,
-        })}>
-          {meta?.title}
-        </MuiLink>
-      </Link>
+      <RouteLink href={url ?? ''} variant="h3" sx={(theme: Theme) => ({
+        display: 'inline-block',
+        margin: `${theme.spacing(1)} 0 ${theme.spacing(1)} 0`,
+      })} >
+        {meta?.title}
+      </RouteLink>
+
       <Typography>{meta?.excerpt}</Typography>
     </article>
   )
