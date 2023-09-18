@@ -19,7 +19,7 @@ const darkThemePalette: PaletteOptions = {
   },
   background: {
     paper: '#001928',
-    default: '#001928',
+    default: '#001928'
   },
   text: {
     primary: '#d5e9ff',

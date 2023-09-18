@@ -18,7 +18,7 @@ export default function IndexPage(props: PageProps) {
   return (
     <PageLayout>
       <FilterProvider>
-        <PageMeta title="Posts" keywords={['overview', 'posts']} />
+        <PageMeta title="Blog" keywords={['overview', 'posts', 'blog']} />
 
         <Filters
           posts={posts}
