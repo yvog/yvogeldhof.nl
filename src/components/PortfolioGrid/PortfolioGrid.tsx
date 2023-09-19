@@ -30,7 +30,7 @@ const PortfolioGridItem = ({
             overflow: 'hidden',
             position: 'relative',
             borderRadius: theme.spacing(2),
-            boxShadow: `0 0 ${theme.spacing(2)} 0 ${alpha(theme.palette.primary.main, 0.2)}`,
+            boxShadow: theme.palette.mode === 'light' ? `0 0 ${theme.spacing(2)} 0 ${alpha(theme.palette.common.black, 0.1)}` : undefined,
             transition: 'transform .25s ease',
 
             '&:hover': {
@@ -61,12 +61,12 @@ const PortfolioGridItem = ({
             })
         })}
         >
-            <Box component='figure' sx={{
+            <Box component='figure' sx={(theme: Theme) => ({
                 ...(!imageUrl && {
                     width: 22,
                     height: 22
-                }),
-            }}>
+                })
+            })}>
                 {imageUrl && <Box component='img' src={imageUrl} alt={title} sx={{
                     position: 'absolute',
                     top: 0,
@@ -88,7 +88,7 @@ const PortfolioGridItem = ({
                     whiteSpace: 'nowrap',
                     textOverflow: 'ellipsis',
                     overflow: 'hidden',
-                    background: alpha(theme.palette.common.white, 0.85),
+                    background: alpha(theme.palette.common.white, 0.9),
                     color: theme.palette.grey[700],
                     fontSize: 12,
                     py: 1,
