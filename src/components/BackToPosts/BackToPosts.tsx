@@ -1,5 +1,6 @@
-import { ArrowBackIos } from '@mui/icons-material'
-import { Button, ButtonProps, Theme } from '@mui/material'
+import ArrowBackIos from "@mui/icons-material/ArrowBackIos";
+import Button from "@mui/material/Button";
+import { ButtonProps, Theme } from "@mui/material";
 import { mergeSx } from '../../util/mergeSx'
 
 type BackToPostsProps = Pick<ButtonProps, 'sx'>

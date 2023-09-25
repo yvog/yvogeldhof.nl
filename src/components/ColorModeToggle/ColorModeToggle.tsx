@@ -1,6 +1,6 @@
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined'
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined'
-import { IconButton } from '@mui/material'
+import IconButton from "@mui/material/IconButton";
 import { useColorModeContext } from '../../context/ColorModeContext/useColorModeContext'
 
 export const ColorModeToggle = () => {

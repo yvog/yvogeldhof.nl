@@ -1,5 +1,8 @@
-import { HideImageOutlined } from '@mui/icons-material';
-import { Box, Grid, Theme, Typography, alpha } from '@mui/material';
+import HideImageOutlined from "@mui/icons-material/HideImageOutlined";
+import { Theme, alpha } from "@mui/material";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
 
 export type PortfolioItem = {
     id: string;
@@ -30,16 +33,36 @@ const PortfolioGridItem = ({
             overflow: 'hidden',
             position: 'relative',
             borderRadius: theme.spacing(2),
-            boxShadow: theme.palette.mode === 'light' ? `0 0 ${theme.spacing(2)} 0 ${alpha(theme.palette.common.black, 0.1)}` : undefined,
-            transition: 'transform .25s ease',
+            transition: 'transform .5s cubic-bezier(.25, .1, .25, 1), box-shadow .5s cubic-bezier(.25, .1, .25, 1)',
+            boxShadow: theme.palette.mode === 'light' ? `0 2px 12px -8px ${alpha(theme.palette.common.black, 0.5)}` : undefined,
 
             '&:hover': {
                 transform: 'scale(1.05)',
+                boxShadow: theme.palette.mode === 'light' ? `0 8px 12px -8px ${alpha(theme.palette.common.black, 0.5)}` : undefined,
 
                 '& figcaption': {
+                    opacity: 1,
                     bottom: 0
+                },
+
+                '&:after': {
+                    opacity: 1
                 }
             },
+
+            ...(imageUrl && {
+                '&:after': {
+                    content: '""',
+                    width: '100%',
+                    height: '100%',
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    opacity: 0,
+                    transition: 'opacity .5s ease',
+                    background: `linear-gradient(transparent 25%, ${alpha(theme.palette.grey[700], 0.3)} 100%)`
+                }
+            }),
 
             ...(!imageUrl && {
                 border: `1px dashed ${theme.palette.divider}`,
@@ -61,12 +84,12 @@ const PortfolioGridItem = ({
             })
         })}
         >
-            <Box component='figure' sx={(theme: Theme) => ({
+            <Box component='figure' sx={{
                 ...(!imageUrl && {
                     width: 22,
                     height: 22
                 })
-            })}>
+            }}>
                 {imageUrl && <Box component='img' src={imageUrl} alt={title} sx={{
                     position: 'absolute',
                     top: 0,
@@ -85,17 +108,32 @@ const PortfolioGridItem = ({
                     left: 0,
                     bottom: '-100%',
                     width: '100%',
-                    whiteSpace: 'nowrap',
-                    textOverflow: 'ellipsis',
-                    overflow: 'hidden',
-                    background: alpha(theme.palette.common.white, 0.9),
-                    color: theme.palette.grey[700],
-                    fontSize: 12,
+                    height: '100%',
                     py: 1,
                     px: 1.5,
-                    transition: 'bottom .25s .025s ease',
+                    display: 'flex',
+                    alignItems: 'flex-end',
+                    justifyContent: 'center',
+
+                    opacity: 0,
+                    transition: 'bottom .5s ease, opacity .5s ease',
+                    zIndex: 1,
+
+                    '& > span': {
+                        fontSize: 12,
+                        fontWeight: 600,
+                        color: theme.palette.common.white,
+                        whiteSpace: 'nowrap',
+                        textOverflow: 'ellipsis',
+                        overflow: 'hidden',
+                        maxWidth: 'max-content',
+                        display: 'block'
+                    }
                 })}>
-                    {title}
+                    <span>
+                        {title}
+                    </span>
+
                 </Typography>
             </Box>
         </Grid>

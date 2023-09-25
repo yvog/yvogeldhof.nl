@@ -1,4 +1,8 @@
-import { Checkbox, Divider, FormControlLabel, FormGroup, Typography } from '@mui/material';
+import Checkbox from "@mui/material/Checkbox";
+import Divider from "@mui/material/Divider";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormGroup from "@mui/material/FormGroup";
+import Typography from "@mui/material/Typography";
 import { useRouter } from 'next/router';
 import { useCallback } from 'react';
 import { FacetFilterType, useFilterContext } from '../../../../context/FilterContext/FilterContext';

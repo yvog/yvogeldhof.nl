@@ -1,4 +1,6 @@
-import { Box, Theme, Typography } from '@mui/material'
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import { Theme } from "@mui/material";
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { formatDateString } from '../../util/dates'
 import { MdxContentComponents } from './MdxContentComponents'

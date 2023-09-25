@@ -1,5 +1,9 @@
-import { GitHub, LinkedIn } from '@mui/icons-material'
-import { Box, IconButton, Theme, Typography } from '@mui/material'
+import GitHub from "@mui/icons-material/GitHub";
+import LinkedIn from "@mui/icons-material/LinkedIn";
+import Box from "@mui/material/Box";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import { Theme } from "@mui/material";
 
 export const Footer = () =>
   <Box component='footer' sx={(theme: Theme) => ({

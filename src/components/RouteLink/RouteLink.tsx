@@ -1,4 +1,5 @@
-import { Link as MuiLink, LinkProps as MuiLinkProps, Theme } from '@mui/material';
+import MuiLink from "@mui/material/Link";
+import { LinkProps as MuiLinkProps, Theme } from "@mui/material";
 import Link from 'next/link';
 import { NextRouter, useRouter } from 'next/router';
 import React, { useMemo } from 'react';

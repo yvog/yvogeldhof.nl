@@ -1,4 +1,8 @@
-import { Avatar, Box, List, ListItem, Theme } from '@mui/material';
+import Avatar from "@mui/material/Avatar";
+import Box from "@mui/material/Box";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import { Theme } from "@mui/material";
 import React from 'react';
 import { ColorModeToggle } from '../ColorModeToggle/ColorModeToggle';
 import { RouteLink } from '../RouteLink/RouteLink';

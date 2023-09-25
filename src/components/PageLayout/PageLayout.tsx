@@ -1,4 +1,7 @@
-import { Box, Container, ContainerProps, Divider } from '@mui/material';
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import Divider from "@mui/material/Divider";
+import { ContainerProps } from "@mui/material";
 import { mergeSx } from '../../util/mergeSx';
 import { AboutMe } from '../AboutMe/AboutMe';
 import { Footer } from '../Footer/Footer';

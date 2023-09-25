@@ -1,4 +1,5 @@
-import { Theme, Typography } from '@mui/material'
+import Typography from "@mui/material/Typography";
+import { Theme } from "@mui/material";
 import { BackToPosts } from '../BackToPosts/BackToPosts'
 
 export const NotFound = () =>

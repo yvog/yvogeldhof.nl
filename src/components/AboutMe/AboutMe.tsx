@@ -1,4 +1,8 @@
-import { Avatar, Box, Link, Theme, Typography } from '@mui/material'
+import Avatar from "@mui/material/Avatar";
+import Box from "@mui/material/Box";
+import Link from "@mui/material/Link";
+import Typography from "@mui/material/Typography";
+import { Theme } from "@mui/material";
 
 export const AboutMe = () =>
   <Box sx={(theme: Theme) => ({

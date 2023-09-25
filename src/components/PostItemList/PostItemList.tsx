@@ -1,4 +1,5 @@
-import { Box, Theme } from '@mui/material'
+import Box from "@mui/material/Box";
+import { Theme } from "@mui/material";
 import { Post } from '../../types'
 import { PostItem } from '../PostItem/PostItem'
 

@@ -7,6 +7,7 @@
     "build:sitemap": "next-sitemap --config sitemap.config.js",
     "start": "next start",
     "lint": "next lint",
+    "lint:fix": "next lint --fix",
     "format": "npx prettier --write \"{pages,components}/**/*.{ts,tsx,js,json}\" "
   },
   "engines": {
@@ -32,6 +33,7 @@
     "eslint": "8.9.0",
     "eslint-config-next": "12.1.0",
     "eslint-config-prettier": "^8.4.0",
+    "eslint-plugin-mui-path-imports": "^0.0.15",
     "next-sitemap": "^1.5.18",
     "prettier": "2.5.1",
     "typescript": "4.5.5"
@@ -42,5 +44,10 @@
     "semi": false,
     "singleQuote": true,
     "printWidth": 88
-  }
+  },
+  "browserslist": [
+    "last 2 versions",
+    "> 1%",
+    "not dead"
+  ]
 }

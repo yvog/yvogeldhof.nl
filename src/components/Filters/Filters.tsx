@@ -1,6 +1,10 @@
 import CloseIcon from '@mui/icons-material/Close';
 import FilterAltOutlinedIcon from '@mui/icons-material/FilterAltOutlined';
-import { Box, IconButton, Popover, TextField, debounce } from '@mui/material';
+import Box from "@mui/material/Box";
+import IconButton from "@mui/material/IconButton";
+import Popover from "@mui/material/Popover";
+import TextField from "@mui/material/TextField";
+import { debounce } from "@mui/material";
 import { useRouter } from 'next/router';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { FacetFilterType, useFilterContext } from '../../context/FilterContext/FilterContext';

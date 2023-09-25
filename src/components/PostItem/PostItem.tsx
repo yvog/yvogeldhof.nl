@@ -1,4 +1,5 @@
-import { Theme, Typography } from '@mui/material'
+import Typography from "@mui/material/Typography";
+import { Theme } from "@mui/material";
 import { Post } from '../../types'
 import { formatDateString } from '../../util/dates'
 import { RouteLink } from '../RouteLink/RouteLink'

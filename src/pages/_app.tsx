@@ -1,5 +1,5 @@
 import { CacheProvider, EmotionCache } from '@emotion/react'
-import { CssBaseline } from '@mui/material'
+import CssBaseline from "@mui/material/CssBaseline";
 import type { AppProps } from 'next/app'
 import '../../public/styles/prism-oceanic.css'
 import { BlogThemeProvider } from '../components/Theme/BlogThemeProvider'
