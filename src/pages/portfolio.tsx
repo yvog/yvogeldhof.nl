@@ -68,7 +68,7 @@ export async function getStaticProps() {
                 {
                     id: 'ukelele-gitaarles',
                     title: 'Ukelele-Gitaarles',
-                    description: "New company website for Ukelele-Gitaarles",
+                    description: "New company website for Ukelele-Gitaarles.",
                     imageUrl: '/images/ukelele_gitaarles.png',
                     githubUrl: 'https://github.com/yvog/ukelele-gitaarles-v2',
                     websiteUrl: 'https://ukelele-gitaarles.nl'
