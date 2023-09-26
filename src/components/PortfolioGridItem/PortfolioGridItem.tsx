@@ -33,6 +33,7 @@ export const PortfolioGridItem = ({
             '&:hover': {
                 transform: 'scale(1.05)',
                 boxShadow: theme.palette.mode === 'light' ? `0 8px 12px -8px ${alpha(theme.palette.common.black, 0.5)}` : undefined,
+                cursor: 'pointer',
 
                 '& figcaption': {
                     opacity: 1,
@@ -63,7 +64,7 @@ export const PortfolioGridItem = ({
                 boxShadow: 'none',
 
                 '&:hover': {
-                    transform: 'scale(1)'
+                    //
                 }
             }),
 

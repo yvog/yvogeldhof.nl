@@ -30,7 +30,7 @@ type PortfolioGridProps = {
 export const PortfolioGrid = ({
     items
 }: PortfolioGridProps) => {
-    const [activePortfolioItem, setActivePortfolioItem] = useState<PortfolioItem>({});
+    const [activePortfolioItem, setActivePortfolioItem] = useState<PortfolioItem>({} as PortfolioItem);
     const [drawerOpened, setDrawerOpened] = useState<boolean>(false);
 
     const desktopTileSize = 104;
