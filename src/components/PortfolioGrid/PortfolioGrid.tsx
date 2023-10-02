@@ -9,6 +9,7 @@ export type PortfolioItem = {
     imageUrl: string;
     title: string;
     description: string;
+    period: string;
     featured?: boolean;
     important?: boolean;
     githubUrl?: string;

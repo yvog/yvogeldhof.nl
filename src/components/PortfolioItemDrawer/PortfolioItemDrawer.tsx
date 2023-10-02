@@ -21,7 +21,7 @@ export const PortfolioItemDrawer = ({
   onClose,
   ...drawerProps
 }: PortfolioItemDrawerProps) => {
-  const { title, description, imageUrl, githubUrl, websiteUrl, buttons } = portfolioItem;
+  const { title, description, imageUrl, period, githubUrl, websiteUrl, buttons } = portfolioItem;
   const iconButtonSxProps = {
     sx: (theme: Theme) => ({
       transform: `translateX(-${theme.spacing(1)})`,
@@ -33,7 +33,7 @@ export const PortfolioItemDrawer = ({
       {...drawerProps}
       open={opened}
       anchor="bottom"
-      onClose={(event, reason) => {
+      onClose={() => {
         onClose();
       }}
       PaperProps={{
@@ -78,8 +78,12 @@ export const PortfolioItemDrawer = ({
         })} />
 
         <div>
-          <Typography variant="h4" component="h2" mb={2}>
+          <Typography variant="h4" component="h2" >
             {title}
+          </Typography>
+
+          <Typography variant="caption" component="div" mb={1}>
+            {period}
           </Typography>
 
           <Typography variant="body1" component="p" sx={{
