@@ -30,9 +30,6 @@ export async function getStaticProps() {
                     period: '2018 - 2019',
                     featured: true,
                     buttons: [{
-                        text: 'Play in browser',
-                        href: 'https://games.yvogeldhof.nl/circle-rally-party/',
-                    }, {
                         text: 'Download on itch.io',
                         href: 'https://yvogdev.itch.io/circle-rally-party',
                         bgColor: '#FF2449',
