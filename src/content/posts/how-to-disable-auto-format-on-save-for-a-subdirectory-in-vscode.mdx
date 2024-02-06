@@ -1,5 +1,5 @@
 ---
-title: How to disable auto format on save for whole (sub)directory in VS Code
+title: How to disable auto format on save for a (sub)directory in VS Code
 excerpt: A VS Code setting to disable auto format on save for files in a specific (sub)directory.
 categories:
   - Code Snippets
@@ -10,7 +10,7 @@ date: '2024-02-06'
 When you have a new project with a subdirectory of copied legacy code in it, you might not want to format the code in that directory.
 In our case, this legacy code is still getting small bugfixes in its own repository occassionally, so we want to keep it easy to compare those files.
 
-Add the following snippet to your `settings.json` file, found in the `.vscode` directory in your project. Change the `legacy/**` path to your own (sub)directory:
+Add the following snippet to your `settings.json` file, found in the `.vscode` directory in your project. Change `legacy/**` to your own (sub)directory path:
 
 ```javascript
 {
