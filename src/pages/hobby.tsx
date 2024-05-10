@@ -11,7 +11,7 @@ export default function PortfolioPage(props: PortfolioPageProps) {
 
     return (
         <PageLayout>
-            <PageMeta title="Portfolio" keywords={['portfolio', 'projects']} />
+            <PageMeta title="Hobby" keywords={['hobby', 'projects']} />
             <PortfolioGrid items={portfolioItems} />
         </PageLayout>
     )

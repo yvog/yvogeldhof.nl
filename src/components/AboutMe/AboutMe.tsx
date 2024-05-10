@@ -1,8 +1,8 @@
+import { Theme } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
-import { Theme } from "@mui/material";
 
 export const AboutMe = () =>
   <Box sx={(theme: Theme) => ({
@@ -20,7 +20,7 @@ export const AboutMe = () =>
       <Typography variant="body2" fontWeight="bold" sx={(theme: Theme) => ({
         margin: `0 0 ${theme.spacing(0.5)} 0`,
       })}>
-        Yvo Geldhof (Technical Front-end Developer @{' '}
+        Yvo Geldhof (Front-end Developer @{' '}
         <Link href="https://macaw.nl" target="_blank" underline="hover">
           Macaw
         </Link>

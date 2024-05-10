@@ -51,10 +51,10 @@ export const Header = ({ buttons }: HeaderProps) => {
             </RouteLink>
           </ListItem>
           <ListItem>
-            <RouteLink href='/portfolio' isActive={(router) =>
-              router.asPath === '/portfolio'
+            <RouteLink href='/hobby' isActive={(router) =>
+              router.asPath === '/hobby'
             }>
-              Portfolio
+              Hobby
             </RouteLink>
           </ListItem>
         </List>
