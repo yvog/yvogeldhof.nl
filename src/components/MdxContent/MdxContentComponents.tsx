@@ -1,15 +1,15 @@
-import Link from "@mui/material/Link";
-import Typography from "@mui/material/Typography";
+import Link from '@mui/material/Link';
+import Typography from '@mui/material/Typography';
 
 export const MdxContentComponents = {
   a: (props: any) => {
-    const { href, children } = props
+    const { href, children } = props;
 
     return (
       <Link href={href} color="primary" underline="hover" target="_blank">
         {children}
       </Link>
-    )
+    );
   },
   h1: (props: any) => (
     <Typography variant="h1" component="h1" color="primary" sx={{ mt: 4 }}>
@@ -41,4 +41,4 @@ export const MdxContentComponents = {
       {props.children}
     </Typography>
   ),
-}
+};

@@ -1,14 +1,17 @@
-import GitHub from "@mui/icons-material/GitHub";
-import LinkedIn from "@mui/icons-material/LinkedIn";
-import Box from "@mui/material/Box";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import { Theme } from "@mui/material";
+import GitHub from '@mui/icons-material/GitHub';
+import LinkedIn from '@mui/icons-material/LinkedIn';
+import { Theme } from '@mui/material';
+import Box from '@mui/material/Box';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
 
-export const Footer = () =>
-  <Box component='footer' sx={(theme: Theme) => ({
-    margin: `${theme.spacing(2)} 0 ${theme.spacing(2)} 0`,
-  })}>
+export const Footer = () => (
+  <Box
+    component="footer"
+    sx={(theme: Theme) => ({
+      margin: `${theme.spacing(2)} 0 ${theme.spacing(2)} 0`,
+    })}
+  >
     <Typography variant="body2" component="span">
       &copy; {new Date().getFullYear()}, all rights reserved.
     </Typography>
@@ -24,3 +27,4 @@ export const Footer = () =>
       <GitHub />
     </IconButton>
   </Box>
+);

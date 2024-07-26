@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
-    "format": "npx prettier --write \"{pages,components}/**/*.{ts,tsx,js,json}\" "
+    "format": "npx prettier --write \"src/{pages,components}/**/*.{ts,tsx,js,json}\" "
   },
   "engines": {
     "node": ">=16.14.0 <17"
@@ -18,6 +18,7 @@
     "@emotion/react": "^11.8.1",
     "@emotion/server": "^11.4.0",
     "@emotion/styled": "^11.8.1",
+    "@giscus/react": "^2.3.0",
     "@mapbox/rehype-prism": "^0.8.0",
     "@mui/icons-material": "^5.4.2",
     "@mui/material": "^5.4.3",
@@ -42,7 +43,7 @@
   "prettier": {
     "trailingComma": "es5",
     "tabWidth": 2,
-    "semi": false,
+    "semi": true,
     "singleQuote": true,
     "printWidth": 88
   },

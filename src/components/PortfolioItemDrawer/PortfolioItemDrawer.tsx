@@ -1,10 +1,10 @@
-import Close from "@mui/icons-material/Close";
-import GitHub from "@mui/icons-material/GitHub";
-import Launch from "@mui/icons-material/Launch";
+import Close from '@mui/icons-material/Close';
+import GitHub from '@mui/icons-material/GitHub';
+import Launch from '@mui/icons-material/Launch';
 import Box from '@mui/material/Box';
-import Button from "@mui/material/Button";
+import Button from '@mui/material/Button';
 import Drawer, { DrawerProps } from '@mui/material/Drawer';
-import IconButton from "@mui/material/IconButton";
+import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import { Theme, lighten } from '@mui/material/styles';
 import { PortfolioItem } from '../PortfolioGrid/PortfolioGrid';
@@ -13,7 +13,7 @@ type PortfolioItemDrawerProps = Omit<DrawerProps, 'PaperProps' | 'onClose' | 'op
   portfolioItem: PortfolioItem;
   opened: boolean;
   onClose: () => void;
-}
+};
 
 export const PortfolioItemDrawer = ({
   portfolioItem,
@@ -21,11 +21,12 @@ export const PortfolioItemDrawer = ({
   onClose,
   ...drawerProps
 }: PortfolioItemDrawerProps) => {
-  const { title, description, imageUrl, period, githubUrl, websiteUrl, buttons } = portfolioItem;
+  const { title, description, imageUrl, period, githubUrl, websiteUrl, buttons } =
+    portfolioItem;
   const iconButtonSxProps = {
     sx: (theme: Theme) => ({
       transform: `translateX(-${theme.spacing(1)})`,
-    })
+    }),
   };
 
   return (
@@ -55,11 +56,16 @@ export const PortfolioItemDrawer = ({
         }),
       }}
     >
-      <IconButton onClick={onClose} aria-label="Close pop-up" color="secondary" sx={(theme: Theme) => ({
-        position: 'absolute',
-        right: theme.spacing(3),
-        top: theme.spacing(3)
-      })}>
+      <IconButton
+        onClick={onClose}
+        aria-label="Close pop-up"
+        color="secondary"
+        sx={(theme: Theme) => ({
+          position: 'absolute',
+          right: theme.spacing(3),
+          top: theme.spacing(3),
+        })}
+      >
         <Close />
       </IconButton>
 
@@ -70,15 +76,20 @@ export const PortfolioItemDrawer = ({
           gap: 4,
         }}
       >
-        <Box component='img' src={imageUrl} alt={title} sx={(theme: Theme) => ({
-          width: 80,
-          height: 80,
-          borderRadius: theme.spacing(2),
-          objectFit: 'cover',
-        })} />
+        <Box
+          component="img"
+          src={imageUrl}
+          alt={title}
+          sx={(theme: Theme) => ({
+            width: 80,
+            height: 80,
+            borderRadius: theme.spacing(2),
+            objectFit: 'cover',
+          })}
+        />
 
         <div>
-          <Typography variant="h4" component="h2" >
+          <Typography variant="h4" component="h2">
             {title}
           </Typography>
 
@@ -86,52 +97,74 @@ export const PortfolioItemDrawer = ({
             {period}
           </Typography>
 
-          <Typography variant="body1" component="p" sx={{
-            wordBreak: 'break-word',
-          }}>
+          <Typography
+            variant="body1"
+            component="p"
+            sx={{
+              wordBreak: 'break-word',
+            }}
+          >
             {description}
           </Typography>
 
-          <Box sx={{
-            mt: 2,
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: 2,
-          }}>
-            {githubUrl && <IconButton href={githubUrl} aria-label="View project on GitHub" color="primary"
-              target="_blank" {...iconButtonSxProps}>
-              <GitHub />
-            </IconButton>}
+          <Box
+            sx={{
+              mt: 2,
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: 2,
+            }}
+          >
+            {githubUrl && (
+              <IconButton
+                href={githubUrl}
+                aria-label="View project on GitHub"
+                color="primary"
+                target="_blank"
+                {...iconButtonSxProps}
+              >
+                <GitHub />
+              </IconButton>
+            )}
 
-            {websiteUrl && <IconButton href={websiteUrl} aria-label="View website" color="primary"
-              target="_blank" {...iconButtonSxProps}>
-              <Launch />
-            </IconButton>}
+            {websiteUrl && (
+              <IconButton
+                href={websiteUrl}
+                aria-label="View website"
+                color="primary"
+                target="_blank"
+                {...iconButtonSxProps}
+              >
+                <Launch />
+              </IconButton>
+            )}
 
-            {buttons?.map((button) => <Button
-              key={button.text}
-              sx={(theme: Theme) => ({
-                background: button.bgColor,
-                color: button.textColor,
-                textTransform: 'none',
-                borderRadius: theme.spacing(2),
-                px: 2,
-                whiteSpace: 'nowrap',
+            {buttons?.map((button) => (
+              <Button
+                key={button.text}
+                sx={(theme: Theme) => ({
+                  background: button.bgColor,
+                  color: button.textColor,
+                  textTransform: 'none',
+                  borderRadius: theme.spacing(2),
+                  px: 2,
+                  whiteSpace: 'nowrap',
 
-                ...(button.bgColor && {
-                  '&:hover': {
-                    background: lighten(button.bgColor, 0.15)
-                  }
-                })
-              })}
-              href={button.href}
-              target='_blank'
-            >
-              {button.text}
-            </Button>)}
+                  ...(button.bgColor && {
+                    '&:hover': {
+                      background: lighten(button.bgColor, 0.15),
+                    },
+                  }),
+                })}
+                href={button.href}
+                target="_blank"
+              >
+                {button.text}
+              </Button>
+            ))}
           </Box>
         </div>
       </Box>
-    </Drawer >
-  )
-}
+    </Drawer>
+  );
+};

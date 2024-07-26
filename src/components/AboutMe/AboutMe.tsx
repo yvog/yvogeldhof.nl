@@ -1,8 +1,8 @@
-import { type Theme } from '@mui/material'
-import Avatar from '@mui/material/Avatar'
-import Box from '@mui/material/Box'
-import Link from '@mui/material/Link'
-import Typography from '@mui/material/Typography'
+import { Theme } from '@mui/material';
+import Avatar from '@mui/material/Avatar';
+import Box from '@mui/material/Box';
+import Link from '@mui/material/Link';
+import Typography from '@mui/material/Typography';
 
 export const AboutMe = () => (
   <Box
@@ -50,4 +50,4 @@ export const AboutMe = () => (
       </Typography>
     </div>
   </Box>
-)
+);

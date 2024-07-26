@@ -1,5 +1,5 @@
 import { CacheProvider, EmotionCache } from '@emotion/react';
-import CssBaseline from "@mui/material/CssBaseline";
+import CssBaseline from '@mui/material/CssBaseline';
 import type { AppProps } from 'next/app';
 import '../../public/styles/prism-oceanic.css';
 import { BlogThemeProvider } from '../components/Theme/BlogThemeProvider';
@@ -7,14 +7,14 @@ import createEmotionCache from '../components/Theme/createEmotionCache';
 import { ColorModeContextProvider } from '../context/ColorModeContext/ColorModeContextProvider';
 
 // Client-side cache, shared for the whole session of the user in the browser.
-const muiCache = createEmotionCache()
+const muiCache = createEmotionCache();
 
 type MyAppProps = AppProps & {
-  emotionCache?: EmotionCache
-}
+  emotionCache?: EmotionCache;
+};
 
 export default function MyApp(props: MyAppProps) {
-  const { Component, emotionCache = muiCache, pageProps } = props
+  const { Component, emotionCache = muiCache, pageProps } = props;
 
   return (
     <CacheProvider value={emotionCache}>
@@ -25,5 +25,5 @@ export default function MyApp(props: MyAppProps) {
         </BlogThemeProvider>
       </ColorModeContextProvider>
     </CacheProvider>
-  )
+  );
 }

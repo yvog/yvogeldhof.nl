@@ -1,8 +1,8 @@
-import { PaletteMode, PaletteOptions } from '@mui/material'
+import { PaletteMode, PaletteOptions } from '@mui/material';
 
 const lightThemePalette: PaletteOptions = {
   secondary: {
-    main: '#001928'
+    main: '#001928',
   },
   background: {
     paper: '#edf0f3',
@@ -11,27 +11,27 @@ const lightThemePalette: PaletteOptions = {
   text: {
     primary: '#212121',
   },
-}
+};
 
 const darkThemePalette: PaletteOptions = {
   secondary: {
-    main: '#d5e9ff'
+    main: '#d5e9ff',
   },
   background: {
     paper: '#001928',
-    default: '#001928'
+    default: '#001928',
   },
   text: {
     primary: '#d5e9ff',
-    secondary: '#d5e9ff'
+    secondary: '#d5e9ff',
   },
-}
+};
 
-const fontFamilyHeadings = "'Poppins', Segoe UI, Tahoma, sans-serif"
-const fontFamilyBody = "'Source Sans Pro', Tahoma, sans-serif"
+const fontFamilyHeadings = "'Poppins', Segoe UI, Tahoma, sans-serif";
+const fontFamilyBody = "'Source Sans Pro', Tahoma, sans-serif";
 
 export const getTheme = (mode: PaletteMode) => {
-  const themePalette = mode === 'light' ? lightThemePalette : darkThemePalette
+  const themePalette = mode === 'light' ? lightThemePalette : darkThemePalette;
 
   return {
     palette: {
@@ -73,7 +73,7 @@ export const getTheme = (mode: PaletteMode) => {
       body2: {
         fontSize: 14,
         fontWeight: 300,
-        fontFamily: fontFamilyBody
+        fontFamily: fontFamilyBody,
       },
       caption: {
         lineHeight: 1.7,
@@ -125,18 +125,18 @@ export const getTheme = (mode: PaletteMode) => {
         styleOverrides: {
           root: {
             ...(mode === 'dark' && {
-              color: 'rgba(213, 233, 255, 0.5)'
+              color: 'rgba(213, 233, 255, 0.5)',
             }),
-          }
-        }
+          },
+        },
       },
       MuiOutlinedInput: {
         styleOverrides: {
           notchedOutline: {
             transition: 'border .15s ease',
-          }
-        }
-      }
+          },
+        },
+      },
     },
-  }
-}
+  };
+};

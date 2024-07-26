@@ -1,16 +1,16 @@
-import Head from 'next/head'
+import Head from 'next/head';
 
 type PageMetaProps = {
-  title: string
-  robots?: string
-  description?: string
-  keywords?: string[]
-}
+  title: string;
+  robots?: string;
+  description?: string;
+  keywords?: string[];
+};
 
 export const PageMeta = (props: PageMetaProps) => {
-  const { title, robots, description, keywords } = props
-  const siteName = "Yvo Geldhof"
-  const pageTitle = `${title} - ${siteName}`
+  const { title, robots, description, keywords } = props;
+  const siteName = 'Yvo Geldhof';
+  const pageTitle = `${title} - ${siteName}`;
   const pageKeywords = [
     'tech',
     'react',
@@ -29,10 +29,10 @@ export const PageMeta = (props: PageMetaProps) => {
     'personal',
     'website',
     ...(keywords ?? []),
-  ].join(',')
+  ].join(',');
   const descr =
     description ??
-    'Yvo Geldhof writes about front-end development, game development and everything inbetween as long as it is about tech.'
+    'Yvo Geldhof writes about front-end development, game development and everything inbetween as long as it is about tech.';
 
   return (
     <>
@@ -57,5 +57,5 @@ export const PageMeta = (props: PageMetaProps) => {
         <meta property="og:site_name" content={siteName} />
       </Head>
     </>
-  )
-}
+  );
+};
