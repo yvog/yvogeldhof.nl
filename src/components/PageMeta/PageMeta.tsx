@@ -24,10 +24,10 @@ export const PageMeta = (props: PageMetaProps) => {
     'development',
     'developer',
     'blog',
-    'sharepoint',
-    'macaw',
     'yvo',
     'geldhof',
+    'personal',
+    'website',
     ...(keywords ?? []),
   ].join(',')
   const descr =
