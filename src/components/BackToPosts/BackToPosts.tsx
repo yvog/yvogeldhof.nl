@@ -1,6 +1,6 @@
 import ArrowBackIos from '@mui/icons-material/ArrowBackIos';
-import Button from '@mui/material/Button';
 import { ButtonProps, Theme } from '@mui/material';
+import Button from '@mui/material/Button';
 import { mergeSx } from '../../util/mergeSx';
 
 type BackToPostsProps = Pick<ButtonProps, 'sx'>;
@@ -15,7 +15,7 @@ export const BackToPosts = (props: BackToPostsProps) => {
       href="/"
       sx={mergeSx(
         (theme: Theme) => ({
-          margin: `${theme.spacing(1.5)} 0 0 0`,
+          margin: `${theme.spacing(2.5)} 0 ${theme.spacing(1)} 0`,
           transform: `translateX(-${theme.spacing(1)})`,
         }),
         sx

@@ -48,7 +48,8 @@ export default function PostPage(props: PostPageProps) {
 
       <Box
         sx={{
-          my: 4,
+          mt: 3.5,
+          mb: 4,
         }}
       >
         <Giscus
