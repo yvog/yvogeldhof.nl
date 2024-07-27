@@ -62,7 +62,7 @@ export default function PostPage(props: PostPageProps) {
           reactionsEnabled="1"
           emitMetadata="0"
           inputPosition="top"
-          theme={mode === 'dark' ? 'dark' : 'light'}
+          theme={mode === 'dark' ? 'transparent_dark' : 'light_protanopia'}
           lang="en"
           loading="lazy"
         />
