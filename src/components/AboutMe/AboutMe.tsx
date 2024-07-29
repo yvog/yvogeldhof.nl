@@ -17,6 +17,7 @@ export const AboutMe = () => (
       alt="Yvo Geldhof"
       src="/images/author.jpg"
       sx={{
+        boxShadow: 2,
         width: 80,
         height: 80,
       }}
