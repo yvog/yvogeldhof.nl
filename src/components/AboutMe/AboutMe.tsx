@@ -32,8 +32,8 @@ export const AboutMe = () => (
         })}
       >
         Yvo Geldhof - Front-end Developer @{' '}
-        <Link href="https://npo.nl" target="_blank" underline="hover">
-          Nederlandse Publieke Omroep (NPO)
+        <Link href="https://macaw.nl" target="_blank" underline="hover">
+          Macaw
         </Link>
       </Typography>
 
