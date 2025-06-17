@@ -1,0 +1,119 @@
+---
+title: Enhancing accessibility in a search form using React
+excerpt: Introducing aria live regions and the <output/> element
+categories:
+  - React
+  - TypeScript
+  - JavaScript
+  - HTML
+date: '2024-10-18'
+---
+
+Lately at the NPO (Dutch Foundation for Public Broadcasting) I was working on a public-facing application which involves radio station specific voting rounds. Several times of the year, many users from The Netherlands use this application to vote on their most favorite tracks. These tracks will be sorted and placed in a chart and then broadcasted on the radio afterwards.
+
+This means there are many users of all kinds, which makes a topic like accessibility even more important to pay attention to. We want every user to be able to commit their votes.
+
+As accessibility is being improved bit-by-bit, this post focuses on a single technique I used specifically for making the search feature in this application more accessible.
+
+Imagine the following design:
+![Wireframe](/images/stemtool_wireframe.svg)
+
+When searching for tracks using the search bar, skeleton loaders will be shown in the infinite scrolling container. A text in this container, which only appears when no tracks were found, provides a button for users to submit their own favorite artist and track title not available yet in the full list of tracks. When tracks were found, intuitively the track list updates based on your search criteria.
+
+Seems accessible enough, right? Ship it and don't look back.
+There are some issues with this:
+
+* Users with a screen reader would have never known what the current state of the list is: is it loading? Was my search successfull? Were any tracks found?
+* This violated [WCAG SC 4.1.3 Status Messages Level AA](https://w3c.github.io/wcag/understanding/status-messages)
+
+So, how do we improve this implementation?
+
+The current implementation works fine for users without screen readers. So, ideally, we don't want to add- or remove visual elements. We should focus on changing the DOM structure instead.
+
+## Introducing the [`<output/>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/output) element
+This semantic element is specifically created for rendering form results anywhere in the DOM. What is really cool about this element is that it is a [aria-live](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions) region by default. It also contains `role="status"` implicitly.
+
+Aria-live region is an accessibility feature/technique which makes screen readers read aloud changes happening within the region without the elements being focused.
+
+We can connect the `<output/>` element to a form using the `form`-attribute, leaving us with flexible options for where to place the search results. Please keep in mind that this element only allows [Phrasing Content](https://developer.mozilla.org/en-US/docs/Web/HTML/Content_categories#phrasing_content) nested.
+
+
+So, for example we could create a component like this:
+```typescript
+type FormOutputProperties = {
+	children: React.ReactNode;
+	inputElement: HTMLInputElement | null;
+	politeness: React.OutputHTMLAttributes<HTMLOutputElement['aria-live'];
+};
+
+const FormOutput = ({ children, inputElement, politeness }: FormOutputProperties) => {
+
+	if (!inputElement) {
+		return null;
+	}
+
+	return (
+		<output aria-live={politeness} form={inputElement.form?.id} htmlFor={inputElement.id}>
+			{children}
+		</output>
+	);
+};
+
+export default FormOutput;
+```
+
+And then we can render the page as follows:
+```typescript
+const TrackListPage = () => {
+
+	return (
+		<>
+			<TrackListSearchBar
+				defaultSearchQuery={searchQuery ?? ''}
+				onHandleChange={handleInputChange}
+				ref={inputReference}
+			/>
+
+            ...
+
+			{searchTrackResults && !isLoading ? (
+				<FormOutput inputElement={inputReference.current} politeness="polite">
+					<span className={styles['visually-hidden']}>
+						{searchTrackResults.length > 0 ? 'Tracks have been found.' : 'No tracks found.'}
+					</span>
+					<CardTracks searchResults={results} />
+				</FormOutput>
+			) : (
+				<FormOutput inputElement={inputReference.current} politeness="assertive">
+					<span className={styles['visually-hidden']}>Tracks are loading.</span>
+					<CardTracksSkeletonLoader />
+				</FormOutput>
+			)}
+		</>
+	);
+};
+
+export default TrackListPage;
+```
+
+## Visually hidden elements using CSS
+You might have noticed that we added new `span` elements and making them visually hidden by using a CSS class. This way we only make these messages available to users with a screen reader.
+
+CSS ([Source](https://www.a11yproject.com/posts/how-to-hide-content/)):
+```css
+.visually-hidden {
+	block-size: 1px;
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	inline-size: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+}
+```
+
+## Accessible skeleton loaders
+Now that we have implemented the accessibility improvements, we are missing one thing. The skeleton loaders are still visible to users using a screen reader. We can now fix that by adding `aria-hidden=“true”` to the element containing the skeleton loaders.
+
+## Testing the results
+Easily to test using VoiceOver, available on MacOS. Please note that it is needed to test using various kinds of screen readers, as screen reader implementations differ from one to another.
